@@ -1,1 +1,201 @@
 
+2025-06-29 18:03:49,185 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 18:03:49,185 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 18:03:49,186 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 18:03:49,191 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 18:03:49,191 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 18:03:49,192 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 18:03:49,225 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 18:03:49,225 - jarvis.ai_engine - INFO - Started new session: session_1751234629
+2025-06-29 18:03:49,226 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 18:03:49,226 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 18:03:49,372 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 18:03:49,373 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 18:03:49,373 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 18:03:49,449 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 18:03:49,450 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 18:03:49,450 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 18:04:37,491 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my screen
+2025-06-29 18:04:37,493 - jarvis.main_pyqt - INFO - Processing text input: analyze my screen
+2025-06-29 18:04:37,493 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my screen'
+2025-06-29 18:04:37,495 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:analyze|examine|inspect|check)\s+(?:the\s+)?(?:file\s+)?(.+)
+2025-06-29 18:04:37,495 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_file
+2025-06-29 18:04:37,496 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:04:37,497 - jarvis.ui_manager_pyqt - INFO - Showing response: I couldn't complete that action: Path does not exi...
+2025-06-29 18:04:44,159 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my desktop
+2025-06-29 18:04:44,160 - jarvis.main_pyqt - INFO - Processing text input: analyze my desktop
+2025-06-29 18:04:44,161 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my desktop'
+2025-06-29 18:04:44,162 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:analyze|examine|inspect|check)\s+(?:the\s+)?(?:file\s+)?(.+)
+2025-06-29 18:04:44,162 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_file
+2025-06-29 18:04:44,163 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:04:44,163 - jarvis.ui_manager_pyqt - INFO - Showing response: I couldn't complete that action: Path does not exi...
+2025-06-29 18:05:09,114 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 18:05:09,115 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 18:05:09,116 - jarvis.ai_engine - INFO - Ended session: session_1751234629
+2025-06-29 18:05:09,116 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 18:05:09,117 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 18:05:09,117 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 18:05:09,117 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 18:05:09,118 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 18:05:09,118 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 18:05:09,123 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 18:05:09,123 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 18:08:51,543 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 18:08:51,543 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 18:08:51,544 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 18:08:51,548 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 18:08:51,549 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 18:08:51,549 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 18:08:51,583 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 18:08:51,583 - jarvis.ai_engine - INFO - Started new session: session_1751234931
+2025-06-29 18:08:51,584 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 18:08:51,584 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 18:08:51,694 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 18:08:51,694 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 18:08:51,695 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 18:08:51,784 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 18:08:51,785 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 18:08:51,785 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 18:09:16,339 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my screen
+2025-06-29 18:09:16,341 - jarvis.main_pyqt - INFO - Processing text input: analyze my screen
+2025-06-29 18:09:16,341 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my screen'
+2025-06-29 18:09:16,342 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:capture\s+)?(?:the\s+)?screen
+2025-06-29 18:09:16,343 - jarvis.action_dispatcher - INFO - Handler: _handle_screenshot
+2025-06-29 18:09:16,581 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:09:16,582 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'screenshot' completed successfully....
+2025-06-29 18:09:16,582 - jarvis.main_pyqt - INFO - Action 'screenshot' completed successfully
+2025-06-29 18:09:25,007 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze screenshot
+2025-06-29 18:09:25,008 - jarvis.main_pyqt - INFO - Processing text input: analyze screenshot
+2025-06-29 18:09:25,009 - jarvis.action_dispatcher - INFO - Processing input: 'analyze screenshot'
+2025-06-29 18:09:25,010 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:take\s+)?(?:a\s+)?screenshot
+2025-06-29 18:09:25,010 - jarvis.action_dispatcher - INFO - Handler: _handle_screenshot
+2025-06-29 18:09:25,230 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:09:25,231 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'screenshot' completed successfully....
+2025-06-29 18:09:25,231 - jarvis.main_pyqt - INFO - Action 'screenshot' completed successfully
+2025-06-29 18:11:00,692 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 18:11:00,692 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 18:11:00,692 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 18:11:00,696 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 18:11:00,697 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 18:11:00,698 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 18:11:00,726 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 18:11:00,727 - jarvis.ai_engine - INFO - Started new session: session_1751235060
+2025-06-29 18:11:00,727 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 18:11:00,728 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 18:11:00,846 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 18:11:00,847 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 18:11:00,847 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 18:11:00,904 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 18:11:00,905 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 18:11:00,905 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 18:11:08,845 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my screen
+2025-06-29 18:11:08,847 - jarvis.main_pyqt - INFO - Processing text input: analyze my screen
+2025-06-29 18:11:08,848 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my screen'
+2025-06-29 18:11:08,849 - jarvis.action_dispatcher - INFO - Action detected - Pattern: analyze\s+(?:my\s+)?screen
+2025-06-29 18:11:08,849 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_screenshot
+2025-06-29 18:11:09,060 - jarvis.action_dispatcher - INFO - Analyzing screenshot with vision model: jarvis\temp\screenshots\screenshot_20250629_181108.png
+2025-06-29 18:11:09,067 - jarvis.ai_engine - INFO - Original image size: (3440, 1440), mode: RGB
+2025-06-29 18:11:09,149 - jarvis.ai_engine - INFO - Encoded image size: 278920 characters
+2025-06-29 18:11:14,908 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:11:14,909 - jarvis.ui_manager_pyqt - INFO - Showing response: Here's what I can see on your screen:
+
+ 1. Applica...
+2025-06-29 18:11:14,909 - jarvis.main_pyqt - INFO - Action 'analyze_screenshot' completed successfully
+2025-06-29 18:15:33,130 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 18:15:33,131 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 18:15:33,131 - jarvis.ai_engine - INFO - Ended session: session_1751235060
+2025-06-29 18:15:33,131 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 18:15:33,132 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 18:15:33,132 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 18:15:33,133 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 18:15:33,133 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 18:15:33,133 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 18:15:33,135 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 18:15:33,136 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 18:15:41,990 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 18:15:41,991 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 18:15:41,991 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 18:15:41,997 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 18:15:41,998 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 18:15:41,999 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 18:15:42,037 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 18:15:42,037 - jarvis.ai_engine - INFO - Started new session: session_1751235342
+2025-06-29 18:15:42,038 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 18:15:42,038 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 18:15:42,179 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 18:15:42,180 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 18:15:42,181 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 18:15:42,260 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 18:15:42,261 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 18:15:42,261 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 18:15:59,684 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my screen
+2025-06-29 18:15:59,685 - jarvis.main_pyqt - INFO - Processing text input: analyze my screen
+2025-06-29 18:15:59,686 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my screen'
+2025-06-29 18:15:59,686 - jarvis.action_dispatcher - INFO - Action detected - Pattern: analyze\s+(?:my\s+)?screen
+2025-06-29 18:15:59,687 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_screenshot
+2025-06-29 18:15:59,914 - jarvis.action_dispatcher - INFO - Analyzing screenshot with vision model: jarvis\temp\screenshots\screenshot_20250629_181559.png
+2025-06-29 18:15:59,921 - jarvis.ai_engine - INFO - Original image size: (3440, 1440), mode: RGB
+2025-06-29 18:16:00,405 - jarvis.ai_engine - INFO - Encoded image size: 1575376 characters (PNG format)
+2025-06-29 18:16:06,955 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:16:06,955 - jarvis.ui_manager_pyqt - INFO - Showing response: Here's what I can see on your screen:
+
+ The image ...
+2025-06-29 18:16:06,956 - jarvis.main_pyqt - INFO - Action 'analyze_screenshot' completed successfully
+2025-06-29 18:16:51,955 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 18:16:51,955 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 18:16:51,956 - jarvis.ai_engine - INFO - Ended session: session_1751235342
+2025-06-29 18:16:51,956 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 18:16:51,957 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 18:16:51,957 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 18:16:51,958 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 18:16:51,958 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 18:16:51,958 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 18:16:51,960 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 18:16:51,961 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 18:17:40,142 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 18:17:40,143 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 18:17:40,143 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 18:17:40,147 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 18:17:40,148 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 18:17:40,148 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 18:17:40,178 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 18:17:40,179 - jarvis.ai_engine - INFO - Started new session: session_1751235460
+2025-06-29 18:17:40,179 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 18:17:40,179 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 18:17:40,303 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 18:17:40,304 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 18:17:40,304 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 18:17:40,369 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 18:17:40,369 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 18:17:40,370 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 18:17:52,196 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my screen
+2025-06-29 18:17:52,197 - jarvis.main_pyqt - INFO - Processing text input: analyze my screen
+2025-06-29 18:17:52,198 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my screen'
+2025-06-29 18:17:52,198 - jarvis.action_dispatcher - INFO - Action detected - Pattern: analyze\s+(?:my\s+)?screen
+2025-06-29 18:17:52,199 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_screenshot
+2025-06-29 18:17:52,415 - jarvis.action_dispatcher - INFO - Analyzing screenshot with vision model: jarvis\temp\screenshots\screenshot_20250629_181752.png
+2025-06-29 18:17:52,421 - jarvis.ai_engine - INFO - Original image size: (3440, 1440), mode: RGB
+2025-06-29 18:17:52,902 - jarvis.ai_engine - INFO - Encoded image size: 1562616 characters (PNG format)
+2025-06-29 18:17:56,583 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:17:56,583 - jarvis.ui_manager_pyqt - INFO - Showing response: Here's what I can see on your screen:
+
+ **APPLICAT...
+2025-06-29 18:17:56,583 - jarvis.main_pyqt - INFO - Action 'analyze_screenshot' completed successfully
+2025-06-29 18:18:35,565 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are on my desktop
+2025-06-29 18:18:35,566 - jarvis.main_pyqt - INFO - Processing text input: what files are on my desktop
+2025-06-29 18:18:35,567 - jarvis.action_dispatcher - INFO - Processing input: 'what files are on my desktop'
+2025-06-29 18:18:35,568 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 18:18:35,569 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 18:18:35,570 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 18:18:35,570 - jarvis.ui_manager_pyqt - INFO - Showing response: I couldn't complete that action: Path does not exi...
+2025-06-29 18:18:49,491 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 18:18:49,491 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 18:18:49,492 - jarvis.ai_engine - INFO - Ended session: session_1751235460
+2025-06-29 18:18:49,492 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 18:18:49,493 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 18:18:49,493 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 18:18:49,493 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 18:18:49,494 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 18:18:49,494 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 18:18:49,498 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 18:18:49,499 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete

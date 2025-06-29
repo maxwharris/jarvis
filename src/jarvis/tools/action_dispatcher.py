@@ -160,8 +160,8 @@ class SafetyManager:
             "/etc"
         ]
         
-        # Operations that require confirmation
-        self.dangerous_operations = ["delete", "move", "copy"]
+        # Operations that require confirmation (reduced to truly dangerous operations)
+        self.dangerous_operations = ["delete"]
     
     def validate_path(self, path: str) -> Dict[str, Any]:
         """Validate if path is safe to operate on."""
@@ -581,21 +581,56 @@ class ScreenCapture:
             # Analyze with vision model
             logger.info(f"Analyzing screenshot with vision model: {screenshot_path}")
             
-            enhanced_prompt = """Analyze this screenshot and provide a detailed description of what you see. Be accurate and only describe what is actually visible.
+            enhanced_prompt = """You are analyzing a computer screenshot. Be extremely accurate and only describe what you can actually see in the image. Do not make assumptions or guess about content that is not clearly visible.
 
-Please describe:
-1. Applications and windows that are open
-2. Text content that is clearly readable
-3. UI elements like buttons, menus, toolbars
-4. File names, folder contents, or documents visible
-5. Overall layout and what the user appears to be doing
+IMPORTANT: Only describe what is actually present in the screenshot. If you cannot clearly see something, do not mention it.
 
-Be factual and precise. If something is unclear or partially obscured, mention that rather than guessing."""
+Please provide a structured analysis:
 
-            analysis_result = ai_engine.process_image_input(
-                screenshot_path,
-                enhanced_prompt
-            )
+**APPLICATIONS & WINDOWS:**
+- List only the applications/windows that are clearly visible
+- Identify window titles if readable
+- Note the active/focused window
+
+**VISIBLE TEXT:**
+- Only transcribe text that is clearly readable
+- Include window titles, button labels, menu items
+- Note any error messages or dialog boxes
+
+**UI ELEMENTS:**
+- Describe buttons, menus, toolbars that are visible
+- Note any icons or interface elements
+- Mention scroll bars, tabs, or panels
+
+**FILE/FOLDER CONTENT:**
+- Only mention files/folders if clearly visible in file explorers
+- Include file names if readable
+- Note folder structures if shown
+
+**SCREEN LAYOUT:**
+- Describe the overall arrangement of windows
+- Note desktop background if visible
+- Mention taskbar/dock if present
+
+**USER ACTIVITY:**
+- Based only on what's visible, what might the user be doing
+- Do not speculate beyond what the screenshot shows
+
+Remember: Accuracy is critical. If something is blurry, partially hidden, or unclear, say so rather than guessing."""
+
+            # Use lower temperature for more accurate, less creative analysis
+            original_temp = config.models.temperature
+            try:
+                # Temporarily lower temperature for screenshot analysis
+                config.models.temperature = 0.1  # Much lower for accuracy
+                
+                analysis_result = ai_engine.process_image_input(
+                    screenshot_path,
+                    enhanced_prompt
+                )
+            finally:
+                # Restore original temperature
+                config.models.temperature = original_temp
             
             if analysis_result.get("error"):
                 return {
@@ -738,8 +773,23 @@ class ActionDispatcher:
         self.web_search = WebSearch()
         self.system_info = SystemInfo()
         
-        # Enhanced action patterns with better matching
+        # Enhanced action patterns with better matching - REORDERED FOR PROPER PRECEDENCE
         self.action_patterns = {
+            # Screen analysis patterns - MOST SPECIFIC FIRST
+            r"analyze\s+(?:my\s+)?screen": self._handle_analyze_screenshot,
+            r"analyze\s+(?:my\s+)?desktop": self._handle_analyze_screenshot,
+            r"analyze\s+(?:the\s+)?screenshot": self._handle_analyze_screenshot,
+            r"(?:describe|what'?s\s+(?:in|on))\s+(?:the\s+)?(?:screenshot|image|screen)": self._handle_analyze_screenshot,
+            r"(?:what\s+do\s+you\s+see|tell\s+me\s+about\s+the\s+screen)": self._handle_analyze_screenshot,
+            r"what\s+am\s+i\s+looking\s+at": self._handle_analyze_screenshot,
+            r"what'?s\s+on\s+my\s+screen": self._handle_analyze_screenshot,
+            r"describe\s+(?:my\s+)?screen": self._handle_analyze_screenshot,
+            r"show\s+me\s+(?:my\s+)?screen": self._handle_analyze_screenshot,
+            
+            # Screen capture patterns - AFTER ANALYSIS PATTERNS
+            r"(?:take\s+)?(?:a\s+)?screenshot": self._handle_screenshot,
+            r"(?:capture\s+)?(?:the\s+)?screen": self._handle_screenshot,
+            
             # File listing operations - comprehensive patterns
             r"(?:list|show|display)\s+(?:files?|contents?)\s+(?:in\s+|on\s+|at\s+)?(.+)": self._handle_list_files,
             r"(?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)": self._handle_list_files,
@@ -750,17 +800,10 @@ class ActionDispatcher:
             r"(?:copy|duplicate|backup)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_copy_file,
             r"(?:move|relocate|transfer)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_move_file,
             r"(?:delete|remove|trash)\s+(?:the\s+)?(.+)": self._handle_delete_file,
-            r"(?:analyze|examine|inspect|check)\s+(?:the\s+)?(?:file\s+)?(.+)": self._handle_analyze_file,
             r"(?:search|find)\s+(?:for\s+)?(.+?)\s+(?:in\s+|on\s+)(.+)": self._handle_search_files,
             
-            # Screen capture and analysis - FIXED PATTERNS
-            r"(?:take\s+)?(?:a\s+)?screenshot": self._handle_screenshot,
-            r"(?:capture\s+)?(?:the\s+)?screen": self._handle_screenshot,
-            r"analyze\s+(?:my\s+)?screen": self._handle_analyze_screenshot,
-            r"(?:describe|analyze|what'?s\s+(?:in|on))\s+(?:the\s+)?(?:screenshot|image|screen)": self._handle_analyze_screenshot,
-            r"(?:what\s+do\s+you\s+see|tell\s+me\s+about\s+the\s+screen)": self._handle_analyze_screenshot,
-            r"what\s+am\s+i\s+looking\s+at": self._handle_analyze_screenshot,
-            r"what'?s\s+on\s+my\s+screen": self._handle_analyze_screenshot,
+            # File analysis - MOVED AFTER SCREEN PATTERNS TO PREVENT CONFLICTS
+            r"(?:analyze|examine|inspect|check)\s+(?:the\s+)?(?:file\s+)?(.+)": self._handle_analyze_file,
             
             # Temp file management
             r"(?:clean|cleanup|clear)\s+(?:temp|temporary)\s+(?:files?|folder)": self._handle_cleanup_temp,

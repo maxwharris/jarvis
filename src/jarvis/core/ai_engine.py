@@ -207,11 +207,11 @@ Capabilities:
 
 Guidelines:
 1. Be helpful, concise, and accurate
-2. Always confirm before performing potentially destructive actions
-3. Respect user privacy and security
-4. Use available tools to accomplish tasks
-5. Explain what you're doing and why
-6. Ask for clarification when needed
+2. Respect user privacy and security
+3. Use available tools to accomplish tasks
+4. Explain what you're doing and why
+5. Ask for clarification when needed
+6. Perform requested actions directly when they are safe
 
 Available Actions:
 - file_list: List files in a directory
@@ -358,7 +358,7 @@ Remember: You are running locally and privately on the user's system."""
             }
     
     def _encode_image(self, image_path: str) -> str:
-        """Encode image to base64 for Ollama with optimized preprocessing."""
+        """Encode image to base64 for Ollama with optimized preprocessing for screen analysis."""
         try:
             with Image.open(image_path) as img:
                 logger.info(f"Original image size: {img.size}, mode: {img.mode}")
@@ -368,21 +368,23 @@ Remember: You are running locally and privately on the user's system."""
                     img = img.convert('RGB')
                     logger.debug("Converted image to RGB mode")
                 
-                # Optimize size for LLaVA - use larger size for better detail recognition
-                max_size = 1344  # LLaVA works well with this resolution
+                # Use higher resolution for better screen analysis - increased from 1344
+                max_size = 2048  # Higher resolution for better UI element recognition
                 if max(img.size) > max_size:
                     # Calculate new size maintaining aspect ratio
                     ratio = min(max_size / img.width, max_size / img.height)
                     new_size = (int(img.width * ratio), int(img.height * ratio))
                     img = img.resize(new_size, Image.Resampling.LANCZOS)
                     logger.debug(f"Resized image to: {img.size}")
+                else:
+                    logger.debug(f"Image size {img.size} is within limits, no resizing needed")
                 
-                # Use higher quality for better text recognition
+                # Use PNG format for lossless compression - better for UI elements and text
                 buffer = io.BytesIO()
-                img.save(buffer, format='JPEG', quality=95, optimize=True)
+                img.save(buffer, format='PNG', optimize=True)
                 image_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
                 
-                logger.info(f"Encoded image size: {len(image_data)} characters")
+                logger.info(f"Encoded image size: {len(image_data)} characters (PNG format)")
                 return image_data
                 
         except Exception as e:

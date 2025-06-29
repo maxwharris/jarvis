@@ -228,12 +228,19 @@ class JarvisAssistant:
                 if action_result.get('success'):
                     response = self._format_action_response(action_result, user_input)
                 else:
-                    # Action failed, let AI handle the error
-                    ai_result = ai_engine.process_text_input(
-                        f"I attempted to {action_result['action_taken']} but encountered an error: {action_result.get('error', 'Unknown error')}. "
-                        f"User's original request: {user_input}"
-                    )
-                    response = ai_result['response']
+                    # Handle specific error types
+                    error_msg = action_result.get('error', 'Unknown error')
+                    
+                    # Check if it's a confirmation requirement
+                    if "requires confirmation" in error_msg.lower():
+                        # For delete operations, provide clear confirmation prompt
+                        if "delete" in action_result.get('action_taken', '').lower():
+                            response = f"⚠️ **Confirmation Required**\n\nAre you sure you want to delete this item? This action cannot be undone (though a backup will be created).\n\nTo confirm, please say: **'delete [filename] confirm'**"
+                        else:
+                            response = f"This operation requires confirmation. Please add 'confirm' to your request to proceed."
+                    else:
+                        # Other errors - provide helpful response without passing to AI
+                        response = f"I couldn't complete that action: {error_msg}"
             else:
                 # No action needed, process as regular conversation
                 ai_result = ai_engine.process_text_input(user_input)

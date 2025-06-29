@@ -1,267 +1,282 @@
-# 🚀 Enhanced Action System Guide
+# 🤖 Jarvis AI Assistant
 
-## Overview
+A powerful, privacy-focused AI assistant that runs entirely on your local machine using Ollama. Jarvis provides intelligent file management, screen analysis, voice interaction, and task automation while keeping all your data private and secure.
 
-The Jarvis AI Assistant now features a completely overhauled action system that provides comprehensive file management, screen analysis, and system operations with single-command execution.
+## ✨ Features
 
-## 🎯 Key Improvements
+### 🧠 **AI-Powered Intelligence**
+- **Local LLM Integration** - Powered by Ollama with support for multiple models
+- **Vision Capabilities** - Analyze screenshots and images with LLaVA
+- **Conversation Memory** - Maintains context across interactions
+- **Smart Action Recognition** - Automatically detects and executes file operations
 
-### ✅ **Fixed Critical Issues**
-- **"analyze my screen"** now works immediately without back-and-forth
-- Actions execute directly without AI conversation fallback
-- Proper pattern matching for all screen analysis commands
-- Streamlined response formatting
+### 📁 **Advanced File Management**
+- **Intelligent File Operations** - Copy, move, rename, and analyze files
+- **Smart Directory Browsing** - List and explore folder contents
+- **File Search** - Find files by name or content
+- **Safe Deletion** - Automatic backups before deletion
+- **File Analysis** - Detailed file properties and content preview
 
-### 🗂️ **Comprehensive File Management**
-- List, copy, move, delete files and directories
-- Advanced file search by name and content
-- File analysis with metadata and content preview
-- Safety features with backups and confirmations
+### 🖥️ **Screen Analysis & Automation**
+- **Screenshot Capture** - Take and analyze screen contents
+- **Visual Understanding** - Describe what's visible on your screen
+- **UI Element Recognition** - Identify applications, windows, and content
+- **Automated Analysis** - Process screenshots with vision models
 
-### 📁 **Organized Temporary File System**
-```
-jarvis/temp/
-├── screenshots/     # All screenshots with timestamps
-├── downloads/       # Downloaded files
-├── analysis/        # File analysis outputs
-├── cache/          # Temporary cache files
-└── exports/        # Exported data
-```
+### 🎤 **Voice & Text Interaction**
+- **Wake Word Detection** - Activate with "Hey Max"
+- **Speech-to-Text** - Convert voice commands to text
+- **Text-to-Speech** - Spoken responses (configurable)
+- **Hotkey Support** - Quick text input with Ctrl+Alt+J
+- **Multiple Input Methods** - Voice, text, and GUI interaction
 
-### 🔒 **Safety & Security Features**
-- Restricted path protection (system directories)
-- Automatic backups before destructive operations
-- Confirmation prompts for dangerous actions
-- Operation history logging
+### 🌐 **Web Integration** (Optional)
+- **Web Search** - Search the internet when online mode is enabled
+- **Privacy Controls** - Easily toggle online/offline modes
+- **DuckDuckGo Integration** - Privacy-focused search results
 
-## 📋 Available Actions
+### 🔒 **Privacy & Security**
+- **100% Local Processing** - No data sent to external servers
+- **Offline by Default** - Works completely offline
+- **Conversation Logging** - Optional with full user control
+- **Safe Path Validation** - Prevents access to system directories
+- **Encrypted Storage** - Optional log encryption
 
-### 🖥️ **Screen Capture & Analysis**
-```
-Commands:
-- "analyze my screen"
-- "what's on my screen"
-- "describe the screen"
-- "take a screenshot"
-- "capture the screen"
+## 🚀 Quick Start
 
-Features:
-- Automatic screenshot capture
-- AI-powered image analysis
-- Saved to temp/screenshots/ with timestamps
-- Detailed descriptions of UI elements and content
-```
+### Prerequisites
+- **Python 3.11+** (Python 3.13 supported)
+- **Ollama** - Download from [ollama.ai](https://ollama.ai)
+- **Windows 11** (primary support)
 
-### 📁 **File Management**
-```
-List Files:
-- "list files on desktop"
-- "show me files in documents"
-- "what files are in downloads"
-- "browse my pictures folder"
+### Installation
 
-Copy Files:
-- "copy resume.pdf to desktop"
-- "duplicate photo.jpg to backup folder"
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd jarvis
+   ```
 
-Move Files:
-- "move old_file.txt to archive"
-- "relocate document.pdf to documents"
+2. **Install dependencies:**
+   ```bash
+   # For Python 3.13
+   pip install -r requirements-py313.txt
+   
+   # For Python 3.11/3.12
+   pip install -r requirements.txt
+   ```
 
-Delete Files:
-- "delete temp_file.txt"
-- "remove old_backup.zip"
-- Note: Creates backup before deletion
+3. **Install and start Ollama:**
+   ```bash
+   # Download Ollama from https://ollama.ai
+   # Then pull required models:
+   ollama pull qwen2.5:14b
+   ollama pull llava:latest
+   ollama pull nomic-embed-text
+   ```
 
-Analyze Files:
-- "analyze document.pdf"
-- "examine photo.jpg"
-- "check config.yaml"
-
-Search Files:
-- "search for python in projects"
-- "find readme in documents"
-```
-
-### 🗂️ **Temporary File Management**
-```
-Commands:
-- "temp info" - Show temp folder usage
-- "show temp files" - List temporary files
-- "clean temp folder" - Remove old files
-- "cleanup temp" - Free up space
-
-Features:
-- Automatic cleanup after 24 hours
-- Size monitoring and limits
-- Organized by file type and date
-```
-
-### 💻 **System Information**
-```
-Commands:
-- "system info"
-- "how is the computer doing"
-- "system status"
-
-Information Provided:
-- CPU usage and core count
-- Memory usage and availability
-- Disk space and usage
-- Network statistics
-```
-
-### 🌐 **Web Search** (when online mode enabled)
-```
-Commands:
-- "search for python tutorials"
-- "look up weather in New York"
-- "what is machine learning"
-
-Features:
-- DuckDuckGo integration
-- Instant answers and summaries
-- Related topics and sources
-```
-
-## 🔧 Technical Implementation
-
-### **Enhanced Pattern Matching**
-```python
-# Fixed patterns for screen analysis
-r"analyze\s+(?:my\s+)?screen": self._handle_analyze_screenshot,
-r"what'?s\s+on\s+my\s+screen": self._handle_analyze_screenshot,
-r"(?:describe|analyze|what'?s\s+(?:in|on))\s+(?:the\s+)?(?:screenshot|image|screen)": self._handle_analyze_screenshot,
-
-# Comprehensive file operations
-r"(?:list|show|display)\s+(?:files?|contents?)\s+(?:in\s+|on\s+|at\s+)?(.+)": self._handle_list_files,
-r"(?:copy|duplicate|backup)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_copy_file,
-```
-
-### **Priority Processing**
-1. **Special Commands** (exit, clear history)
-2. **Action Detection** (file ops, screen analysis)
-3. **Direct Execution** (no AI processing for actions)
-4. **Formatted Response** (user-friendly output)
-5. **AI Conversation** (only if no action detected)
-
-### **Response Formatting**
-Actions now return formatted, informative responses:
-```
-Screenshot Analysis:
-
-I can see you have the Jarvis AI Assistant chat window open. The interface shows:
-- A dark themed chat window with gradient styling
-- Previous conversation about screen analysis
-- An input field at the bottom for typing messages
-- The window appears to be running on Windows with standard window controls
-```
+4. **Run Jarvis:**
+   ```bash
+   python run_jarvis_pyqt.py
+   ```
 
 ## 🎯 Usage Examples
 
-### **Single Command Execution**
+### File Management
 ```
-User: "analyze my screen"
-Jarvis: [Takes screenshot immediately, analyzes with vision model, returns detailed description]
-
-User: "list files on desktop"
-Jarvis: [Lists all desktop files with sizes and dates]
-
-User: "copy important.txt to backup folder"
-Jarvis: [Copies file and confirms success]
+"list files in documents"
+"copy report.pdf to backup folder"
+"move old photos to archive"
+"analyze this document"
+"search for python files in projects"
 ```
 
-### **File Operations**
+### Screen Analysis
 ```
-User: "what files are in my downloads"
-Jarvis: 
-Directory: C:/Users/username/Downloads
-Found 15 files and 3 directories
-Total size: 2.3 GB
-
-Files:
-  • document.pdf (1.2 MB)
-  • photo.jpg (856 KB)
-  • setup.exe (45.2 MB)
-  ...
-
-Directories:
-  📁 Old Downloads
-  📁 Software
-  📁 Documents
+"take a screenshot"
+"analyze my screen"
+"what's on my screen?"
+"describe what you see"
 ```
 
-### **System Monitoring**
+### System Information
 ```
-User: "system info"
-Jarvis:
-System Information
-
-CPU: 25.3% usage (8 cores)
-Memory: 8.2GB / 16.0GB (51%)
-Disk: 245.6GB / 500.0GB (49%)
+"system status"
+"how is my computer performing?"
+"show system info"
 ```
 
-## 🛡️ Safety Features
-
-### **Path Validation**
-- Prevents access to system directories
-- Validates file existence before operations
-- Resolves relative paths safely
-
-### **Backup System**
-- Automatic backups before file deletion
-- Backups stored in temp/backups/
-- Timestamped backup files
-
-### **Confirmation Requirements**
-- Delete operations require explicit confirmation
-- Dangerous operations are logged
-- Operation history maintained
-
-## 🚀 Getting Started
-
-1. **Start Jarvis**: `python run_jarvis_pyqt.py`
-2. **Try Commands**:
-   - "analyze my screen"
-   - "list files here"
-   - "system info"
-   - "temp info"
-
-## 🔧 Configuration
-
-### **Temp Folder Settings**
-```python
-# In action_dispatcher.py
-self.cleanup_interval = 24  # hours
-self.max_size_mb = 1024    # 1GB max temp storage
+### Voice Commands
+```
+"Hey Max, list my desktop files"
+"Hey Max, take a screenshot and analyze it"
+"Hey Max, what's the weather like?" (online mode)
 ```
 
-### **Safety Settings**
-```python
-# Restricted paths (automatically protected)
-self.restricted_paths = [
-    "C:/Windows",
-    "C:/Program Files", 
-    "/System",
-    "/usr"
-]
+## ⚙️ Configuration
+
+### Main Configuration (`config/settings.yaml`)
+
+```yaml
+# AI Models
+models:
+  text_model: "qwen2.5:14b"
+  vision_model: "llava:latest"
+  ollama_host: "http://localhost:11434"
+
+# Voice Settings (can be disabled)
+voice:
+  enabled: false  # Set to true to enable voice features
+  wake_word: "hey max"
+  tts_engine: "pyttsx3"
+
+# Privacy Settings
+privacy:
+  online_mode: false  # Enable for web search
+  log_conversations: true
+  confirm_dangerous_actions: true
+
+# UI Settings
+ui:
+  theme: "dark"
+  system_tray: true
+  startup_notification: true
 ```
+
+### Model Configuration (`config/models.yaml`)
+- Detailed model settings and performance profiles
+- Custom model configurations
+- Performance optimization settings
+
+## 🏗️ Architecture
+
+### Core Components
+
+```
+src/jarvis/
+├── core/                   # Core functionality
+│   ├── ai_engine.py       # Ollama integration & AI processing
+│   ├── config.py          # Configuration management
+│   ├── logging.py         # Logging & conversation history
+│   └── ollama_manager.py  # Ollama server management
+├── input/                 # Input handlers
+│   ├── voice_handler.py   # Voice processing & wake words
+│   └── text_handler.py    # Text input & hotkeys
+├── output/                # Output managers
+│   ├── tts_engine.py      # Text-to-speech
+│   ├── ui_manager_pyqt.py # PyQt6 GUI
+│   └── ui_manager.py      # Base UI manager
+└── tools/                 # Action system
+    └── action_dispatcher.py # File ops, screen capture, etc.
+```
+
+### Key Features
+
+- **Modular Design** - Easy to extend and customize
+- **Async Processing** - Non-blocking operations
+- **Error Handling** - Comprehensive error recovery
+- **Logging System** - Detailed operation tracking
+- **Safety Mechanisms** - Path validation and backups
+
+## 🔧 Advanced Features
+
+### Temporary File Management
+- Automatic cleanup of old files
+- Organized temp folder structure
+- Size monitoring and management
+
+### Action Recognition
+- Pattern-based command detection
+- Natural language processing
+- Context-aware responses
+
+### Screen Capture System
+- High-quality screenshot capture
+- Optimized image processing for AI analysis
+- Automatic temp file management
+
+### Safety Systems
+- Restricted path protection
+- Automatic file backups
+- Confirmation for dangerous operations
+- Comprehensive audit logging
+
+## 🛠️ Development
+
+### Running in Development Mode
+```bash
+# Enable debug logging
+export JARVIS_DEBUG=true
+python run_jarvis_pyqt.py
+```
+
+### Testing
+```bash
+# Run action dispatcher tests
+python -m src.jarvis.tools.action_dispatcher
+
+# Test individual components
+python -c "from src.jarvis.core.ai_engine import ai_engine; print(ai_engine.get_model_status())"
+```
+
+### Adding New Actions
+1. Add pattern to `action_dispatcher.py`
+2. Implement handler method
+3. Add response formatting
+4. Update documentation
 
 ## 📊 Performance
 
-- **Action Detection**: < 10ms
-- **File Operations**: Near-instant
-- **Screenshot + Analysis**: 2-5 seconds
-- **System Info**: < 100ms
+### System Requirements
+- **RAM**: 8GB minimum, 16GB recommended
+- **Storage**: 10GB for models, 1GB for application
+- **CPU**: Modern multi-core processor
+- **GPU**: Optional, CUDA support for faster processing
 
-## 🎉 Benefits
+### Model Performance
+- **qwen2.5:14b**: Excellent reasoning, 4-8GB VRAM
+- **llava:latest**: Good vision analysis, 6-10GB VRAM
+- **Response Times**: 1-5 seconds depending on complexity
 
-1. **Single Command Execution** - No more back-and-forth
-2. **Comprehensive File Management** - Full directory operations
-3. **Organized Storage** - Temp files properly managed
-4. **Safety First** - Backups and confirmations
-5. **Rich Responses** - Detailed, formatted output
-6. **Fast Performance** - Direct action execution
+## 🔐 Privacy & Security
 
-The enhanced action system transforms Jarvis from a conversational AI into a powerful system assistant that can perform complex operations with simple voice or text commands.
+### Data Handling
+- **No External Servers** - Everything runs locally
+- **Optional Logging** - Full user control over data retention
+- **Encrypted Storage** - Optional encryption for sensitive data
+- **Safe Defaults** - Privacy-first configuration
+
+### Security Features
+- **Path Validation** - Prevents unauthorized file access
+- **Operation Logging** - Audit trail for all actions
+- **Backup System** - Automatic backups before destructive operations
+- **Sandboxed Operations** - Isolated temp file processing
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our contributing guidelines for:
+- Code style and standards
+- Testing requirements
+- Documentation updates
+- Feature requests and bug reports
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+- **Ollama** - For providing excellent local LLM infrastructure
+- **PyQt6** - For the robust GUI framework
+- **LLaVA** - For vision-language capabilities
+- **Qwen** - For powerful language understanding
+
+## 📞 Support
+
+- **Issues**: Report bugs and request features via GitHub Issues
+- **Documentation**: Check the `docs/` folder for detailed guides
+- **Community**: Join our discussions for help and tips
+
+---
+
+**Jarvis AI Assistant** - Your intelligent, private, local AI companion. 🤖✨
