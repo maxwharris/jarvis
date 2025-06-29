@@ -1,0 +1,148 @@
+# AI Model Configurations for Jarvis
+
+# Text Models
+text_models:
+  qwen2.5:14b:
+    name: "Qwen 2.5 14B"
+    description: "Primary text processing model"
+    context_length: 32768
+    parameters: 14000000000
+    recommended_vram: 8192
+    capabilities: ["text_generation", "reasoning", "coding", "analysis"]
+    
+  qwen2.5:7b:
+    name: "Qwen 2.5 7B"
+    description: "Fallback text model for lower VRAM"
+    context_length: 32768
+    parameters: 7000000000
+    recommended_vram: 4096
+    capabilities: ["text_generation", "reasoning", "coding"]
+
+# Vision Models
+vision_models:
+  llava:13b:
+    name: "LLaVA 1.6 13B"
+    description: "Primary vision-language model"
+    context_length: 4096
+    parameters: 13000000000
+    recommended_vram: 8192
+    capabilities: ["image_analysis", "visual_qa", "ocr", "scene_description"]
+    
+  llava:7b:
+    name: "LLaVA 1.6 7B"
+    description: "Fallback vision model"
+    context_length: 4096
+    parameters: 7000000000
+    recommended_vram: 4096
+    capabilities: ["image_analysis", "visual_qa", "scene_description"]
+
+# Embedding Models
+embedding_models:
+  nomic-embed-text:
+    name: "Nomic Embed Text"
+    description: "Text embedding model for semantic search"
+    dimensions: 768
+    max_sequence_length: 8192
+    capabilities: ["text_embedding", "semantic_search"]
+
+# Speech Models
+speech_models:
+  whisper:
+    base:
+      name: "Whisper Base"
+      description: "Fast speech recognition"
+      size: "74MB"
+      languages: 99
+      accuracy: "good"
+      speed: "fast"
+    
+    small:
+      name: "Whisper Small"
+      description: "Balanced speech recognition"
+      size: "244MB"
+      languages: 99
+      accuracy: "better"
+      speed: "medium"
+    
+    medium:
+      name: "Whisper Medium"
+      description: "High accuracy speech recognition"
+      size: "769MB"
+      languages: 99
+      accuracy: "high"
+      speed: "slow"
+
+# TTS Models
+tts_models:
+  silero:
+    voices:
+      - "en_v6"
+      - "en_v5"
+      - "en_v4"
+    languages: ["en", "de", "es", "fr", "ru"]
+    quality: "high"
+    speed: "fast"
+    
+  bark:
+    voices:
+      - "v2/en_speaker_0"
+      - "v2/en_speaker_1"
+      - "v2/en_speaker_2"
+    languages: ["en", "zh", "fr", "de", "hi", "it", "ja", "ko", "pl", "pt", "ru", "es", "tr"]
+    quality: "very_high"
+    speed: "slow"
+
+# Wake Word Models
+wake_word_models:
+  openwakeword:
+    models:
+      - "hey_jarvis"
+      - "hey_max"
+      - "computer"
+    threshold: 0.5
+    buffer_size: 1280
+    
+  porcupine:
+    keywords:
+      - "jarvis"
+      - "computer"
+      - "hey-siri"
+    sensitivity: 0.5
+
+# Model Download URLs and Checksums
+model_sources:
+  ollama_models:
+    - name: "qwen2.5:14b"
+      command: "ollama pull qwen2.5:14b"
+      size: "8.7GB"
+      
+    - name: "llava:13b"
+      command: "ollama pull llava:13b"
+      size: "7.3GB"
+      
+    - name: "nomic-embed-text"
+      command: "ollama pull nomic-embed-text"
+      size: "274MB"
+
+# Performance Profiles
+performance_profiles:
+  high_performance:
+    text_model: "qwen2.5:14b"
+    vision_model: "llava:13b"
+    stt_model: "medium"
+    tts_engine: "bark"
+    min_vram: 12288
+    
+  balanced:
+    text_model: "qwen2.5:14b"
+    vision_model: "llava:7b"
+    stt_model: "small"
+    tts_engine: "silero"
+    min_vram: 8192
+    
+  low_resource:
+    text_model: "qwen2.5:7b"
+    vision_model: "llava:7b"
+    stt_model: "base"
+    tts_engine: "pyttsx3"
+    min_vram: 4096

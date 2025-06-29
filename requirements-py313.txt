@@ -1,0 +1,31 @@
+# Core AI and ML (Python 3.13 compatible)
+ollama>=0.1.7
+
+# Basic Speech Processing (compatible versions)
+sounddevice>=0.4.6
+numpy>=1.24.0
+webrtcvad>=2.0.10
+
+# Text-to-Speech (fallback only)
+pyttsx3>=2.90
+
+# Image Processing
+Pillow>=10.0.0
+
+# Web and API
+requests>=2.31.0
+
+# GUI and System Integration
+keyboard>=0.13.5
+psutil>=5.9.0
+plyer>=2.1.0
+
+# Utilities
+pyyaml>=6.0.1
+python-dateutil>=2.8.2
+colorama>=0.4.6
+
+# Optional: Try these if they work with Python 3.13
+# If any fail, just comment them out
+# faster-whisper>=0.10.0
+# pystray>=0.19.4
