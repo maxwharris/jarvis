@@ -31,8 +31,18 @@ except ImportError:
 from ..core.config import config
 from ..core.logging import get_logger, log_performance
 from ..core.ai_engine import ai_engine
+from ..core.user_profile import user_profile_manager
 
 logger = get_logger("action_dispatcher")
+
+# Import UI automation components
+try:
+    from .ui_automator import UIAutomator, AUTOMATION_AVAILABLE
+    from .app_automators import AppAutomationManager
+    UI_AUTOMATION_AVAILABLE = AUTOMATION_AVAILABLE
+except ImportError:
+    UI_AUTOMATION_AVAILABLE = False
+    logger.warning("UI automation not available - install pyautogui and pygetwindow")
 
 
 class TempFileManager:
@@ -773,6 +783,16 @@ class ActionDispatcher:
         self.web_search = WebSearch()
         self.system_info = SystemInfo()
         
+        # Initialize UI automation if available
+        if UI_AUTOMATION_AVAILABLE:
+            self.ui_automator = UIAutomator()
+            self.app_automation_manager = AppAutomationManager(self.ui_automator)
+            logger.info("UI automation system initialized")
+        else:
+            self.ui_automator = None
+            self.app_automation_manager = None
+            logger.warning("UI automation not available")
+        
         # Enhanced action patterns with better matching - REORDERED FOR PROPER PRECEDENCE
         self.action_patterns = {
             # Screen analysis patterns - MOST SPECIFIC FIRST
@@ -790,20 +810,31 @@ class ActionDispatcher:
             r"(?:take\s+)?(?:a\s+)?screenshot": self._handle_screenshot,
             r"(?:capture\s+)?(?:the\s+)?screen": self._handle_screenshot,
             
-            # File listing operations - comprehensive patterns
+            # File operations - DELETE PATTERNS FIRST (most specific)
+            r"(?:delete|remove|trash)\s+(?:the\s+)?(.+?)\s+(?:file|document|pdf|txt|doc|docx|jpg|png|gif|mp4|mp3|zip|exe)(?:\s+(?:in|from|on)\s+(.+))?": self._handle_delete_file,
+            r"(?:delete|remove|trash)\s+(?:the\s+)?(.+)": self._handle_delete_file,
+            
+            # File analysis - MOVED UP FOR HIGHER PRIORITY - MORE SPECIFIC PATTERNS
+            r"(?:analyze|examine|inspect|check)\s+(?:the\s+)?file\s+(.+)": self._handle_analyze_file,
+            r"(?:analyze|examine|inspect|check)\s+(?:the\s+)?(.+\.(?:txt|py|js|html|css|json|yaml|yml|md|pdf|doc|docx|jpg|png|gif|mp4|mp3|zip|exe))": self._handle_analyze_file,
+            
+            # File operations - OTHER OPERATIONS
+            r"(?:copy|duplicate|backup)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_copy_file,
+            r"(?:move|relocate|transfer)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_move_file,
+            r"(?:search|find)\s+(?:for\s+)?(.+?)\s+(?:in\s+|on\s+)(.+)": self._handle_search_files,
+            
+            # File listing operations - AFTER DELETE PATTERNS - ENHANCED WITH MORE PATTERNS
             r"(?:list|show|display)\s+(?:files?|contents?)\s+(?:in\s+|on\s+|at\s+)?(.+)": self._handle_list_files,
             r"(?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)": self._handle_list_files,
             r"(?:show\s+me\s+)?(?:the\s+)?(?:files?|contents?)\s+(?:in\s+|on\s+|of\s+)?(?:my\s+)?(.+)": self._handle_list_files,
             r"(?:browse|explore|look\s+in|check)\s+(?:the\s+)?(.+)(?:\s+(?:folder|directory))?": self._handle_list_files,
             
-            # File operations
-            r"(?:copy|duplicate|backup)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_copy_file,
-            r"(?:move|relocate|transfer)\s+(.+?)\s+(?:to|into)\s+(.+)": self._handle_move_file,
-            r"(?:delete|remove|trash)\s+(?:the\s+)?(.+)": self._handle_delete_file,
-            r"(?:search|find)\s+(?:for\s+)?(.+?)\s+(?:in\s+|on\s+)(.+)": self._handle_search_files,
-            
-            # File analysis - MOVED AFTER SCREEN PATTERNS TO PREVENT CONFLICTS
-            r"(?:analyze|examine|inspect|check)\s+(?:the\s+)?(?:file\s+)?(.+)": self._handle_analyze_file,
+            # Additional casual/contracted patterns for file listing
+            r"what'?s\s+(?:in\s+|on\s+)?(?:my\s+)?(.+?)(?:\s+(?:folder|directory))?": self._handle_list_files,
+            r"whats\s+(?:in\s+|on\s+)?(?:my\s+)?(.+?)(?:\s+(?:folder|directory))?": self._handle_list_files,
+            r"tell\s+me\s+what'?s\s+(?:in\s+|on\s+)?(?:my\s+)?(.+?)(?:\s+(?:folder|directory))?": self._handle_list_files,
+            r"(?:show\s+me\s+)?(?:the\s+)?(.+?)(?:\s+(?:folder|directory))": self._handle_list_files,
+            r"show\s+me\s+(?:my\s+)?(downloads|desktop|documents|pictures|videos|music)": self._handle_list_files,
             
             # Temp file management
             r"(?:clean|cleanup|clear)\s+(?:temp|temporary)\s+(?:files?|folder)": self._handle_cleanup_temp,
@@ -825,7 +856,24 @@ class ActionDispatcher:
             user_input_lower = user_input.lower().strip()
             logger.info(f"Processing input: '{user_input_lower}'")
             
-            # Check each pattern in order
+            # First, check for app automation commands if available
+            if self.app_automation_manager:
+                automation_result = await self.app_automation_manager.process_automation_command(user_input)
+                if automation_result.get("automation_executed"):
+                    if automation_result.get("success"):
+                        return {
+                            "action_taken": "app_automation",
+                            "success": True,
+                            "result": automation_result["result"]
+                        }
+                    else:
+                        return {
+                            "action_taken": "app_automation",
+                            "success": False,
+                            "error": automation_result.get("error", "App automation failed")
+                        }
+            
+            # Check each pattern in order for other actions
             for pattern, handler in self.action_patterns.items():
                 match = re.search(pattern, user_input_lower)
                 if match:
@@ -866,21 +914,18 @@ class ActionDispatcher:
         try:
             directory = match.group(1).strip()
             
-            # Handle common directory references
-            directory_map = {
-                "here": ".",
-                "current": ".",
-                "this": ".",
-                "home": "~",
-                "desktop": "~/Desktop",
-                "documents": "~/Documents", 
-                "downloads": "~/Downloads",
-                "pictures": "~/Pictures",
-                "videos": "~/Videos",
-                "music": "~/Music"
-            }
-            
-            directory = directory_map.get(directory, directory)
+            # Try to resolve directory using user profile first
+            resolved_directory = user_profile_manager.resolve_directory_alias(directory)
+            if resolved_directory:
+                directory = resolved_directory
+            else:
+                # Fallback to basic mapping
+                directory_map = {
+                    "here": ".",
+                    "current": ".",
+                    "this": ".",
+                }
+                directory = directory_map.get(directory, directory)
             
             # Check for recursive flag
             recursive = "recursive" in original_input.lower() or "all" in original_input.lower()
@@ -915,7 +960,28 @@ class ActionDispatcher:
     async def _handle_delete_file(self, match, original_input: str) -> Dict[str, Any]:
         """Handle file deletion request."""
         try:
-            file_path = match.group(1).strip()
+            file_description = match.group(1).strip()
+            directory_hint = None
+            
+            # Check if there's a directory hint in the second group
+            if len(match.groups()) > 1 and match.group(2):
+                directory_hint = match.group(2).strip()
+            
+            # Try to resolve directory hint using user profile
+            if directory_hint:
+                resolved_directory = user_profile_manager.resolve_directory_alias(directory_hint)
+                if resolved_directory:
+                    directory_hint = resolved_directory
+            
+            # Try to find the specific file
+            file_path = await self._find_file_by_description(file_description, directory_hint)
+            
+            if not file_path:
+                return {
+                    "success": False,
+                    "error": f"Could not find file matching '{file_description}'" + 
+                            (f" in {directory_hint}" if directory_hint else "")
+                }
             
             # Check for confirmation in input
             confirm = "confirm" in original_input.lower() or "yes" in original_input.lower()
@@ -924,6 +990,50 @@ class ActionDispatcher:
             
         except Exception as e:
             return {"success": False, "error": str(e)}
+    
+    async def _find_file_by_description(self, description: str, directory_hint: str = None) -> str:
+        """Find a file based on description and optional directory hint."""
+        try:
+            # Start with common directories if no hint provided
+            search_dirs = []
+            
+            if directory_hint:
+                search_dirs = [directory_hint]
+            else:
+                # Search in common user directories
+                profile = user_profile_manager.get_current_profile()
+                search_dirs = [
+                    profile.directories.downloads,
+                    profile.directories.desktop,
+                    profile.directories.documents,
+                    "."  # Current directory
+                ]
+            
+            # Look for files matching the description
+            for search_dir in search_dirs:
+                try:
+                    if not Path(search_dir).exists():
+                        continue
+                        
+                    for file_path in Path(search_dir).iterdir():
+                        if file_path.is_file():
+                            file_name = file_path.name.lower()
+                            desc_lower = description.lower()
+                            
+                            # Check for exact matches or partial matches
+                            if (desc_lower in file_name or 
+                                file_name.startswith(desc_lower) or
+                                any(word in file_name for word in desc_lower.split())):
+                                return str(file_path)
+                                
+                except (PermissionError, OSError):
+                    continue
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Error finding file by description: {e}")
+            return None
     
     async def _handle_analyze_file(self, match, original_input: str) -> Dict[str, Any]:
         """Handle file analysis request."""

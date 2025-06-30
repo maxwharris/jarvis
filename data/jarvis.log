@@ -199,3 +199,747 @@
 2025-06-29 18:18:49,494 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
 2025-06-29 18:18:49,498 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
 2025-06-29 18:18:49,499 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 19:06:04,924 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 19:06:04,926 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 19:06:04,926 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 19:06:04,931 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 19:06:04,932 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 19:06:04,932 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 19:06:04,961 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 19:06:04,962 - jarvis.ai_engine - INFO - Started new session: session_1751238364
+2025-06-29 19:06:04,962 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 19:06:04,963 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 19:06:05,108 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 19:06:05,109 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 19:06:05,109 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 19:06:05,180 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 19:06:05,181 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 19:06:05,181 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 19:06:20,777 - jarvis.ui_manager_pyqt - INFO - Chat message received: hello
+2025-06-29 19:06:20,778 - jarvis.main_pyqt - INFO - Processing text input: hello
+2025-06-29 19:06:20,779 - jarvis.action_dispatcher - INFO - Processing input: 'hello'
+2025-06-29 19:06:20,781 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 19:06:26,232 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:06:26,233 - jarvis.ui_manager_pyqt - INFO - Showing response: Hello! How can I assist you today? Remember, since...
+2025-06-29 19:06:26,233 - jarvis.main_pyqt - INFO - Response generated in 5450ms
+2025-06-29 19:06:35,674 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are on my desktop
+2025-06-29 19:06:35,675 - jarvis.main_pyqt - INFO - Processing text input: what files are on my desktop
+2025-06-29 19:06:35,675 - jarvis.action_dispatcher - INFO - Processing input: 'what files are on my desktop'
+2025-06-29 19:06:35,676 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 19:06:35,677 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 19:06:35,677 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 19:06:35,679 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:06:35,679 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Desktop:
+
+...
+2025-06-29 19:06:35,680 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 19:06:51,244 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in my downloads
+2025-06-29 19:06:51,246 - jarvis.main_pyqt - INFO - Processing text input: what files are in my downloads
+2025-06-29 19:06:51,247 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in my downloads'
+2025-06-29 19:06:51,247 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 19:06:51,248 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 19:06:51,251 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:06:51,251 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Downloads:...
+2025-06-29 19:06:51,252 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 19:07:03,377 - jarvis.ui_manager_pyqt - INFO - Chat message received: delete the pdf file in my downloads
+2025-06-29 19:07:03,378 - jarvis.main_pyqt - INFO - Processing text input: delete the pdf file in my downloads
+2025-06-29 19:07:03,379 - jarvis.action_dispatcher - INFO - Processing input: 'delete the pdf file in my downloads'
+2025-06-29 19:07:03,380 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:show\s+me\s+)?(?:the\s+)?(?:files?|contents?)\s+(?:in\s+|on\s+|of\s+)?(?:my\s+)?(.+)
+2025-06-29 19:07:03,381 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 19:07:03,382 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:07:03,382 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Downloads:...
+2025-06-29 19:07:03,383 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 19:08:30,233 - jarvis.ui_manager_pyqt - INFO - Chat message received: what is on my screen right now
+2025-06-29 19:08:30,234 - jarvis.main_pyqt - INFO - Processing text input: what is on my screen right now
+2025-06-29 19:08:30,235 - jarvis.action_dispatcher - INFO - Processing input: 'what is on my screen right now'
+2025-06-29 19:08:30,235 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:capture\s+)?(?:the\s+)?screen
+2025-06-29 19:08:30,236 - jarvis.action_dispatcher - INFO - Handler: _handle_screenshot
+2025-06-29 19:08:30,475 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:08:30,476 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'screenshot' completed successfully....
+2025-06-29 19:08:30,476 - jarvis.main_pyqt - INFO - Action 'screenshot' completed successfully
+2025-06-29 19:08:35,993 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze screenshot
+2025-06-29 19:08:35,994 - jarvis.main_pyqt - INFO - Processing text input: analyze screenshot
+2025-06-29 19:08:35,994 - jarvis.action_dispatcher - INFO - Processing input: 'analyze screenshot'
+2025-06-29 19:08:35,995 - jarvis.action_dispatcher - INFO - Action detected - Pattern: analyze\s+(?:my\s+)?screen
+2025-06-29 19:08:35,995 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_screenshot
+2025-06-29 19:08:36,229 - jarvis.action_dispatcher - INFO - Analyzing screenshot with vision model: jarvis\temp\screenshots\screenshot_20250629_190836.png
+2025-06-29 19:08:36,236 - jarvis.ai_engine - INFO - Original image size: (3440, 1440), mode: RGB
+2025-06-29 19:08:36,700 - jarvis.ai_engine - INFO - Encoded image size: 2093700 characters (PNG format)
+2025-06-29 19:08:41,494 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:08:41,494 - jarvis.ui_manager_pyqt - INFO - Showing response: Here's what I can see on your screen:
+
+ **APPLICAT...
+2025-06-29 19:08:41,495 - jarvis.main_pyqt - INFO - Action 'analyze_screenshot' completed successfully
+2025-06-29 19:14:37,985 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 19:14:37,986 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 19:14:37,986 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 19:14:37,991 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 19:14:37,992 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 19:14:37,992 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 19:14:38,018 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 19:14:38,019 - jarvis.ai_engine - INFO - Started new session: session_1751238878
+2025-06-29 19:14:38,019 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 19:14:38,020 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 19:14:38,826 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 19:14:38,826 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 19:14:38,827 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 19:14:38,882 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 19:14:38,883 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 19:14:38,884 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 19:14:41,280 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 19:14:41,299 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:14:42,958 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:14:46,704 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:14:54,377 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in my downloads folder
+2025-06-29 19:14:54,379 - jarvis.main_pyqt - INFO - Processing text input: what files are in my downloads folder
+2025-06-29 19:14:54,379 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in my downloads folder'
+2025-06-29 19:14:54,381 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 19:14:54,382 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 19:14:54,383 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:14:54,383 - jarvis.ui_manager_pyqt - INFO - Showing response: I couldn't complete that action: Path does not exi...
+2025-06-29 19:15:00,956 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in my downloads
+2025-06-29 19:15:00,957 - jarvis.main_pyqt - INFO - Processing text input: what files are in my downloads
+2025-06-29 19:15:00,958 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in my downloads'
+2025-06-29 19:15:00,958 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 19:15:00,959 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 19:15:00,959 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:15:00,960 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Downloads:...
+2025-06-29 19:15:00,960 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 19:15:06,054 - jarvis.ui_manager_pyqt - INFO - Chat message received: delete the pdf file
+2025-06-29 19:15:06,055 - jarvis.main_pyqt - INFO - Processing text input: delete the pdf file
+2025-06-29 19:15:06,056 - jarvis.action_dispatcher - INFO - Processing input: 'delete the pdf file'
+2025-06-29 19:15:06,057 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:delete|remove|trash)\s+(?:the\s+)?(.+?)\s+(?:file|document|pdf|txt|doc|docx|jpg|png|gif|mp4|mp3|zip|exe)(?:\s+(?:in|from|on)\s+(.+))?
+2025-06-29 19:15:06,058 - jarvis.action_dispatcher - INFO - Handler: _handle_delete_file
+2025-06-29 19:15:06,059 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:15:20,427 - jarvis.ui_manager_pyqt - INFO - Chat message received: delete Beginner_Friendly_AI_Assistant_Outline.pdf confirm
+2025-06-29 19:15:20,429 - jarvis.main_pyqt - INFO - Processing text input: delete Beginner_Friendly_AI_Assistant_Outline.pdf confirm
+2025-06-29 19:15:20,429 - jarvis.action_dispatcher - INFO - Processing input: 'delete beginner_friendly_ai_assistant_outline.pdf confirm'
+2025-06-29 19:15:20,430 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:delete|remove|trash)\s+(?:the\s+)?(.+)
+2025-06-29 19:15:20,430 - jarvis.action_dispatcher - INFO - Handler: _handle_delete_file
+2025-06-29 19:15:20,471 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:15:20,473 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'delete_file' completed successfully....
+2025-06-29 19:15:20,475 - jarvis.main_pyqt - INFO - Action 'delete_file' completed successfully
+2025-06-29 19:17:45,182 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 19:17:45,183 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 19:17:45,184 - jarvis.ai_engine - INFO - Ended session: session_1751238878
+2025-06-29 19:17:45,184 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 19:17:45,185 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 19:17:45,185 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 19:17:45,186 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 19:17:45,186 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 19:17:45,186 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 19:17:45,187 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 19:17:45,188 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 19:17:50,062 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 19:17:50,063 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 19:17:50,063 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 19:17:50,067 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 19:17:50,068 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 19:17:50,068 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 19:17:50,094 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 19:17:50,095 - jarvis.ai_engine - INFO - Started new session: session_1751239070
+2025-06-29 19:17:50,095 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 19:17:50,096 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 19:17:50,350 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 19:17:50,350 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 19:17:50,351 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 19:17:50,409 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 19:17:50,409 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 19:17:50,410 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 19:17:55,612 - jarvis.ui_manager_pyqt - INFO - Chat message received: whats on my desktop
+2025-06-29 19:17:55,613 - jarvis.main_pyqt - INFO - Processing text input: whats on my desktop
+2025-06-29 19:17:55,614 - jarvis.action_dispatcher - INFO - Processing input: 'whats on my desktop'
+2025-06-29 19:17:55,617 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 19:18:04,841 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:18:04,842 - jarvis.ui_manager_pyqt - INFO - Showing response: To show you what's currently on your desktop, I'll...
+2025-06-29 19:18:04,842 - jarvis.main_pyqt - INFO - Response generated in 9223ms
+2025-06-29 19:19:34,659 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 19:19:34,660 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 19:19:34,660 - jarvis.ai_engine - INFO - Ended session: session_1751239070
+2025-06-29 19:19:34,660 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 19:19:34,661 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 19:19:34,661 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 19:19:34,661 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 19:19:34,662 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 19:19:34,663 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 19:19:34,666 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 19:19:34,666 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 19:20:27,681 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 19:20:27,681 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 19:20:27,682 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 19:20:27,685 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 19:20:27,687 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 19:20:27,687 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 19:20:27,714 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 19:20:27,715 - jarvis.ai_engine - INFO - Started new session: session_1751239227
+2025-06-29 19:20:27,715 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 19:20:27,716 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 19:20:27,977 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 19:20:27,978 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 19:20:27,979 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 19:20:28,035 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 19:20:28,035 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 19:20:28,036 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 19:21:32,603 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 19:21:32,620 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:21:36,591 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:21:49,370 - jarvis.ui_manager_pyqt - INFO - Chat message received: whats in my desktop folder
+2025-06-29 19:21:49,371 - jarvis.main_pyqt - INFO - Processing text input: whats in my desktop folder
+2025-06-29 19:21:49,372 - jarvis.action_dispatcher - INFO - Processing input: 'whats in my desktop folder'
+2025-06-29 19:21:49,375 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 19:21:51,614 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 19:21:51,615 - jarvis.ui_manager_pyqt - INFO - Showing response: To show you what files and folders are currently i...
+2025-06-29 19:21:51,615 - jarvis.main_pyqt - INFO - Response generated in 2238ms
+2025-06-29 19:21:54,762 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:22:13,442 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 19:22:13,442 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 19:22:13,443 - jarvis.ai_engine - INFO - Ended session: session_1751239227
+2025-06-29 19:22:13,444 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 19:22:13,445 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 19:22:13,445 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 19:22:13,446 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 19:22:13,446 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 19:22:13,447 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 19:22:13,450 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 19:22:13,451 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 19:22:20,025 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 19:22:20,025 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 19:22:20,026 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 19:22:20,030 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 19:22:20,031 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 19:22:20,031 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 19:22:20,057 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 19:22:20,058 - jarvis.ai_engine - INFO - Started new session: session_1751239340
+2025-06-29 19:22:20,058 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 19:22:20,059 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 19:22:20,318 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 19:22:20,318 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 19:22:20,319 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 19:22:20,376 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 19:22:20,377 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 19:22:20,377 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 19:22:21,353 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 19:22:21,372 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:22:22,301 - jarvis.ui_manager_pyqt - INFO - Settings window opened from chat window
+2025-06-29 19:22:25,596 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 19:22:25,599 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 19:22:25,600 - jarvis.ai_engine - INFO - Ended session: session_1751239340
+2025-06-29 19:22:25,602 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 19:22:25,603 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 19:22:25,605 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 19:22:25,606 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 19:22:25,607 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 19:22:25,608 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 19:22:25,609 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 19:22:25,610 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 20:17:47,721 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 20:17:47,722 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 20:17:47,723 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 20:17:47,727 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 20:17:47,728 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 20:17:47,728 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 20:17:47,755 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 20:17:47,755 - jarvis.ai_engine - INFO - Started new session: session_1751242667
+2025-06-29 20:17:47,755 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 20:17:47,756 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 20:17:48,542 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 20:17:48,543 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 20:17:48,543 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 20:17:48,611 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 20:17:48,612 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 20:17:48,612 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 20:17:50,370 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 20:17:50,390 - jarvis.ui_manager_pyqt - INFO - Settings window created and shown
+2025-06-29 20:17:50,391 - jarvis.ui_manager_pyqt - INFO - Settings window opened via UIManager from chat window
+2025-06-29 20:18:09,482 - jarvis.ui_manager_pyqt - INFO - Chat message received: whats in my downloads folder
+2025-06-29 20:18:09,484 - jarvis.main_pyqt - INFO - Processing text input: whats in my downloads folder
+2025-06-29 20:18:09,484 - jarvis.action_dispatcher - INFO - Processing input: 'whats in my downloads folder'
+2025-06-29 20:18:09,488 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:18:17,618 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:18:17,619 - jarvis.ui_manager_pyqt - INFO - Showing response: To show you what's in your Downloads folder, I'll ...
+2025-06-29 20:18:17,619 - jarvis.main_pyqt - INFO - Response generated in 8130ms
+2025-06-29 20:18:26,385 - jarvis.ui_manager_pyqt - INFO - Settings window closed
+2025-06-29 20:18:26,388 - jarvis.ui_manager_pyqt - ERROR - Error showing settings window: 'NoneType' object has no attribute 'destroyed'
+2025-06-29 20:18:26,388 - jarvis.ui_manager_pyqt - INFO - Settings window opened via UIManager from chat window
+2025-06-29 20:33:31,200 - jarvis.ui_manager_pyqt - INFO - Settings window created and shown
+2025-06-29 20:33:31,201 - jarvis.ui_manager_pyqt - INFO - Settings window opened via UIManager from chat window
+2025-06-29 20:33:46,440 - jarvis.ui_manager_pyqt - INFO - Chat message received: whats on my desktop
+2025-06-29 20:33:46,442 - jarvis.main_pyqt - INFO - Processing text input: whats on my desktop
+2025-06-29 20:33:46,443 - jarvis.action_dispatcher - INFO - Processing input: 'whats on my desktop'
+2025-06-29 20:33:46,444 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:33:51,395 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:33:51,395 - jarvis.ui_manager_pyqt - INFO - Showing response: To list the files on your Desktop, I'll need to ac...
+2025-06-29 20:33:51,396 - jarvis.main_pyqt - INFO - Response generated in 4949ms
+2025-06-29 20:35:11,677 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in my downloads
+2025-06-29 20:35:11,679 - jarvis.main_pyqt - INFO - Processing text input: what files are in my downloads
+2025-06-29 20:35:11,679 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in my downloads'
+2025-06-29 20:35:11,680 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 20:35:11,681 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 20:35:11,682 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:35:11,683 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Downloads:...
+2025-06-29 20:35:11,684 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 20:35:19,209 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in my desktop
+2025-06-29 20:35:19,211 - jarvis.main_pyqt - INFO - Processing text input: what files are in my desktop
+2025-06-29 20:35:19,212 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in my desktop'
+2025-06-29 20:35:19,212 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 20:35:19,213 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 20:35:19,214 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:35:19,215 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Desktop:
+
+...
+2025-06-29 20:35:19,216 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 20:39:21,173 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 20:39:21,174 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 20:39:21,174 - jarvis.ai_engine - INFO - Ended session: session_1751242667
+2025-06-29 20:39:21,175 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 20:39:21,175 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 20:39:21,176 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 20:39:21,177 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 20:39:21,177 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 20:39:21,177 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 20:39:21,179 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 20:39:21,179 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 20:39:21,259 - jarvis.ui_manager_pyqt - INFO - Settings window closed
+2025-06-29 20:42:59,988 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 20:42:59,989 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 20:42:59,989 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 20:42:59,994 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 20:42:59,995 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 20:42:59,995 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 20:43:00,022 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 20:43:00,023 - jarvis.ai_engine - INFO - Started new session: session_1751244180
+2025-06-29 20:43:00,023 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 20:43:00,023 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 20:43:00,261 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 20:43:00,262 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 20:43:00,262 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 20:43:00,319 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 20:43:00,320 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 20:43:00,320 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 20:43:18,257 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in the Downloads folder
+2025-06-29 20:43:18,259 - jarvis.main_pyqt - INFO - Processing text input: what files are in the Downloads folder
+2025-06-29 20:43:18,259 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in the downloads folder'
+2025-06-29 20:43:18,262 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 20:43:18,263 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 20:43:18,263 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 20:43:18,264 - jarvis.user_profile - INFO - Resolved 'the downloads folder' to 'downloads' directory
+2025-06-29 20:43:18,265 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:43:18,265 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Downloads:...
+2025-06-29 20:43:18,266 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 20:43:27,111 - jarvis.ui_manager_pyqt - INFO - Chat message received: what files are in the Desktop folder
+2025-06-29 20:43:27,113 - jarvis.main_pyqt - INFO - Processing text input: what files are in the Desktop folder
+2025-06-29 20:43:27,113 - jarvis.action_dispatcher - INFO - Processing input: 'what files are in the desktop folder'
+2025-06-29 20:43:27,114 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:what|which)\s+(?:files?|contents?)\s+(?:are\s+)?(?:in\s+|on\s+|at\s+)?(?:my\s+)?(.+)
+2025-06-29 20:43:27,115 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 20:43:27,115 - jarvis.user_profile - INFO - Resolved 'the desktop folder' to 'desktop' directory
+2025-06-29 20:43:27,117 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:43:27,117 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Desktop:
+
+...
+2025-06-29 20:43:27,118 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 20:45:35,472 - jarvis.ui_manager_pyqt - INFO - Chat message received: analyze my screen
+2025-06-29 20:45:35,473 - jarvis.main_pyqt - INFO - Processing text input: analyze my screen
+2025-06-29 20:45:35,474 - jarvis.action_dispatcher - INFO - Processing input: 'analyze my screen'
+2025-06-29 20:45:35,474 - jarvis.action_dispatcher - INFO - Action detected - Pattern: analyze\s+(?:my\s+)?screen
+2025-06-29 20:45:35,475 - jarvis.action_dispatcher - INFO - Handler: _handle_analyze_screenshot
+2025-06-29 20:45:35,681 - jarvis.action_dispatcher - INFO - Analyzing screenshot with vision model: jarvis\temp\screenshots\screenshot_20250629_204535.png
+2025-06-29 20:45:35,688 - jarvis.ai_engine - INFO - Original image size: (3440, 1440), mode: RGB
+2025-06-29 20:45:36,068 - jarvis.ai_engine - INFO - Encoded image size: 1816844 characters (PNG format)
+2025-06-29 20:45:40,181 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:45:40,182 - jarvis.ui_manager_pyqt - INFO - Showing response: Here's what I can see on your screen:
+
+ **APPLICAT...
+2025-06-29 20:45:40,182 - jarvis.main_pyqt - INFO - Action 'analyze_screenshot' completed successfully
+2025-06-29 20:47:03,108 - jarvis.ui_manager_pyqt - INFO - Chat message received: what apps do i have open
+2025-06-29 20:47:03,109 - jarvis.main_pyqt - INFO - Processing text input: what apps do i have open
+2025-06-29 20:47:03,109 - jarvis.action_dispatcher - INFO - Processing input: 'what apps do i have open'
+2025-06-29 20:47:03,111 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:47:07,268 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:47:07,269 - jarvis.ui_manager_pyqt - INFO - Showing response: To show you which applications are currently open,...
+2025-06-29 20:47:07,269 - jarvis.main_pyqt - INFO - Response generated in 4157ms
+2025-06-29 20:47:32,369 - jarvis.ui_manager_pyqt - INFO - Chat message received: specify what apps are running based on the task bar
+2025-06-29 20:47:32,370 - jarvis.main_pyqt - INFO - Processing text input: specify what apps are running based on the task bar
+2025-06-29 20:47:32,371 - jarvis.action_dispatcher - INFO - Processing input: 'specify what apps are running based on the task bar'
+2025-06-29 20:47:32,372 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:47:35,245 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:47:35,245 - jarvis.ui_manager_pyqt - INFO - Showing response: To identify which applications are currently open ...
+2025-06-29 20:47:35,246 - jarvis.main_pyqt - INFO - Response generated in 2872ms
+2025-06-29 20:48:16,737 - jarvis.ui_manager_pyqt - INFO - Chat message received: what are you capable of doing
+2025-06-29 20:48:16,738 - jarvis.main_pyqt - INFO - Processing text input: what are you capable of doing
+2025-06-29 20:48:16,739 - jarvis.action_dispatcher - INFO - Processing input: 'what are you capable of doing'
+2025-06-29 20:48:16,739 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:48:21,054 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:48:21,055 - jarvis.ui_manager_pyqt - INFO - Showing response: As an AI assistant running locally on your compute...
+2025-06-29 20:48:21,056 - jarvis.main_pyqt - INFO - Response generated in 4314ms
+2025-06-29 20:48:48,297 - jarvis.ui_manager_pyqt - INFO - Settings window created and shown
+2025-06-29 20:48:48,298 - jarvis.ui_manager_pyqt - INFO - Settings window opened via UIManager from chat window
+2025-06-29 20:55:04,431 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 20:55:04,432 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 20:55:04,432 - jarvis.ai_engine - INFO - Ended session: session_1751244180
+2025-06-29 20:55:04,432 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 20:55:04,433 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 20:55:04,433 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 20:55:04,434 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 20:55:04,434 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 20:55:04,435 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 20:55:04,445 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 20:55:04,446 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 20:55:04,541 - jarvis.ui_manager_pyqt - INFO - Settings window closed
+2025-06-29 20:58:16,150 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 20:58:16,150 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 20:58:16,151 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 20:58:16,156 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 20:58:16,157 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 20:58:16,157 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 20:58:16,187 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 20:58:16,187 - jarvis.ai_engine - INFO - Started new session: session_1751245096
+2025-06-29 20:58:16,188 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 20:58:16,188 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 20:58:16,459 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 20:58:16,460 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 20:58:16,460 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 20:58:16,518 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 20:58:16,519 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 20:58:16,519 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 20:58:18,690 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 20:58:18,691 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: True
+2025-06-29 20:58:59,144 - jarvis.ui_manager_pyqt - INFO - Chat message received: what happened in the news today
+2025-06-29 20:58:59,145 - jarvis.main_pyqt - INFO - Processing text input: what happened in the news today
+2025-06-29 20:58:59,146 - jarvis.action_dispatcher - INFO - Processing input: 'what happened in the news today'
+2025-06-29 20:58:59,149 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:59:02,725 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:59:02,726 - jarvis.ui_manager_pyqt - INFO - Showing response: I'm currently operating offline, so I don't have d...
+2025-06-29 20:59:02,726 - jarvis.main_pyqt - INFO - Response generated in 3575ms
+2025-06-29 20:59:21,437 - jarvis.ui_manager_pyqt - INFO - Chat message received: Yes please
+2025-06-29 20:59:21,438 - jarvis.main_pyqt - INFO - Processing text input: Yes please
+2025-06-29 20:59:21,438 - jarvis.action_dispatcher - INFO - Processing input: 'yes please'
+2025-06-29 20:59:21,439 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:59:22,624 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:59:22,625 - jarvis.ui_manager_pyqt - INFO - Showing response: To proceed with the web search, I'll need to estab...
+2025-06-29 20:59:22,625 - jarvis.main_pyqt - INFO - Response generated in 1185ms
+2025-06-29 20:59:28,362 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 20:59:28,363 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: False
+2025-06-29 20:59:32,613 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 20:59:32,614 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: True
+2025-06-29 20:59:34,079 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 20:59:34,080 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: False
+2025-06-29 20:59:36,236 - jarvis.ui_manager_pyqt - INFO - Chat message received: Go ahead
+2025-06-29 20:59:36,237 - jarvis.main_pyqt - INFO - Processing text input: Go ahead
+2025-06-29 20:59:36,238 - jarvis.action_dispatcher - INFO - Processing input: 'go ahead'
+2025-06-29 20:59:36,239 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:59:38,431 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:59:38,431 - jarvis.ui_manager_pyqt - INFO - Showing response: Great, let's start by connecting to the internet a...
+2025-06-29 20:59:38,432 - jarvis.main_pyqt - INFO - Response generated in 2191ms
+2025-06-29 20:59:45,730 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 20:59:45,732 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: True
+2025-06-29 20:59:46,697 - jarvis.ui_manager_pyqt - INFO - Chat message received: yes
+2025-06-29 20:59:46,698 - jarvis.main_pyqt - INFO - Processing text input: yes
+2025-06-29 20:59:46,699 - jarvis.action_dispatcher - INFO - Processing input: 'yes'
+2025-06-29 20:59:46,700 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 20:59:48,699 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 20:59:48,700 - jarvis.ui_manager_pyqt - INFO - Showing response: To help you with the news update, I need access to...
+2025-06-29 20:59:48,700 - jarvis.main_pyqt - INFO - Response generated in 1998ms
+2025-06-29 21:02:00,443 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 21:02:00,443 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 21:02:00,444 - jarvis.ai_engine - INFO - Ended session: session_1751245096
+2025-06-29 21:02:00,444 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 21:02:00,445 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 21:02:00,445 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 21:02:00,446 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 21:02:00,446 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 21:02:00,446 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 21:02:00,447 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 21:02:00,448 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 21:03:15,686 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:03:15,686 - jarvis - INFO - Test message without database
+2025-06-29 21:03:17,693 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:03:17,693 - jarvis - INFO - Testing database recovery integration
+2025-06-29 21:03:17,693 - jarvis - WARNING - This is a test warning
+2025-06-29 21:03:17,693 - jarvis - ERROR - This is a test error
+2025-06-29 21:15:52,244 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:15:52,246 - jarvis - INFO - Database fix test - INFO message
+2025-06-29 21:15:52,252 - jarvis - WARNING - Database fix test - WARNING message
+2025-06-29 21:15:52,258 - jarvis - ERROR - Database fix test - ERROR message
+2025-06-29 21:16:20,176 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:16:20,176 - jarvis - INFO - Test message without database
+2025-06-29 21:16:20,186 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:16:20,187 - jarvis - INFO - Testing database recovery integration
+2025-06-29 21:16:20,193 - jarvis - WARNING - This is a test warning
+2025-06-29 21:16:20,200 - jarvis - ERROR - This is a test error
+2025-06-29 21:16:32,729 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:16:32,731 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 21:16:32,737 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 21:16:32,752 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 21:16:32,759 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 21:16:32,765 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 21:16:32,801 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 21:16:32,805 - jarvis.ai_engine - INFO - Started new session: session_1751246192
+2025-06-29 21:16:32,811 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 21:16:32,817 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 21:16:33,088 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 21:16:33,092 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 21:16:33,099 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 21:16:33,179 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 21:16:33,183 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 21:16:33,266 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 21:16:49,786 - jarvis.ui_manager_pyqt - INFO - Chat message received: whats on my desktop
+2025-06-29 21:16:49,794 - jarvis.main_pyqt - INFO - Processing text input: whats on my desktop
+2025-06-29 21:16:49,806 - jarvis.action_dispatcher - INFO - Processing input: 'whats on my desktop'
+2025-06-29 21:16:49,815 - jarvis.action_dispatcher - INFO - Action detected - Pattern: what'?s\s+(?:in\s+|on\s+)?(?:my\s+)?(.+?)(?:\s+(?:folder|directory))?
+2025-06-29 21:16:49,821 - jarvis.action_dispatcher - INFO - Handler: _handle_list_files
+2025-06-29 21:16:49,828 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 21:16:49,836 - jarvis.user_profile - INFO - Resolved 'd' to 'desktop' directory
+2025-06-29 21:16:49,844 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 21:16:49,852 - jarvis.ui_manager_pyqt - INFO - Showing response: Here are the contents of C:\Users\sckam\Desktop:
+
+...
+2025-06-29 21:16:49,859 - jarvis.main_pyqt - INFO - Action 'list_files' completed successfully
+2025-06-29 21:17:36,128 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 21:17:36,137 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 21:17:36,144 - jarvis.ai_engine - INFO - Ended session: session_1751246192
+2025-06-29 21:17:36,150 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 21:17:36,157 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 21:17:36,164 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 21:17:36,171 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 21:17:36,178 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 21:17:36,184 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 21:17:36,196 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 21:17:36,203 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 21:32:59,517 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 21:32:59,519 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 21:32:59,524 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 21:32:59,532 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 21:32:59,540 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 21:32:59,546 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 21:32:59,580 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 21:32:59,584 - jarvis.ai_engine - INFO - Started new session: session_1751247179
+2025-06-29 21:32:59,590 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 21:32:59,595 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 21:32:59,969 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 21:32:59,973 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 21:32:59,979 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 21:33:00,042 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 21:33:00,046 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 21:33:00,052 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 21:33:04,507 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 21:33:04,517 - jarvis.ui_manager_pyqt - INFO - AI engine system prompt updated with new online/offline state
+2025-06-29 21:33:04,524 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: True
+2025-06-29 21:33:11,318 - jarvis.ui_manager_pyqt - INFO - Chat message received: what happened in the news today
+2025-06-29 21:33:11,326 - jarvis.main_pyqt - INFO - Processing text input: what happened in the news today
+2025-06-29 21:33:11,331 - jarvis.action_dispatcher - INFO - Processing input: 'what happened in the news today'
+2025-06-29 21:33:11,338 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 21:33:22,798 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 21:33:22,810 - jarvis.ui_manager_pyqt - INFO - Showing response: To provide you with up-to-date news, I need to per...
+2025-06-29 21:33:22,845 - jarvis.main_pyqt - INFO - Response generated in 11453ms
+2025-06-29 21:33:34,614 - jarvis.ui_manager_pyqt - INFO - Chat message received: Proceed with search
+2025-06-29 21:33:34,627 - jarvis.main_pyqt - INFO - Processing text input: Proceed with search
+2025-06-29 21:33:34,635 - jarvis.action_dispatcher - INFO - Processing input: 'proceed with search'
+2025-06-29 21:33:34,642 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 21:33:47,529 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 21:33:47,538 - jarvis.ui_manager_pyqt - INFO - Showing response: Great, I will perform a web search to find out wha...
+2025-06-29 21:33:47,544 - jarvis.main_pyqt - INFO - Response generated in 12879ms
+2025-06-29 21:34:09,859 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 21:34:09,868 - jarvis.ui_manager_pyqt - INFO - AI engine system prompt updated with new online/offline state
+2025-06-29 21:34:09,876 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: False
+2025-06-29 21:34:11,852 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 21:34:11,929 - jarvis.ui_manager_pyqt - INFO - Settings window created and shown
+2025-06-29 21:34:11,937 - jarvis.ui_manager_pyqt - INFO - Settings window opened via UIManager from chat window
+2025-06-29 21:34:53,466 - jarvis.user_profile - INFO - Saved profile for user: sckam
+2025-06-29 21:34:53,476 - jarvis.user_profile - INFO - Saved profile for user: sckam
+2025-06-29 21:34:53,482 - jarvis.user_profile - INFO - Saved profile for user: sckam
+2025-06-29 21:34:55,051 - jarvis.user_profile - INFO - Saved profile for user: sckam
+2025-06-29 21:34:55,062 - jarvis.user_profile - INFO - Saved profile for user: sckam
+2025-06-29 21:34:55,069 - jarvis.user_profile - INFO - Saved profile for user: sckam
+2025-06-29 21:34:56,075 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 21:35:01,217 - src.jarvis.core.config - INFO - Configuration saved to C:\Users\sckam\Desktop\code\jarvis\config\settings.yaml
+2025-06-29 21:35:01,222 - jarvis.ui_manager_pyqt - INFO - AI engine system prompt updated with new online/offline state
+2025-06-29 21:35:01,231 - jarvis.ui_manager_pyqt - INFO - Online mode toggled to: True
+2025-06-29 21:35:21,735 - jarvis.ui_manager_pyqt - INFO - Chat message received: search what parades happened in nyc today
+2025-06-29 21:35:21,753 - jarvis.main_pyqt - INFO - Processing text input: search what parades happened in nyc today
+2025-06-29 21:35:21,760 - jarvis.action_dispatcher - INFO - Processing input: 'search what parades happened in nyc today'
+2025-06-29 21:35:21,767 - jarvis.action_dispatcher - INFO - Action detected - Pattern: (?:search|find)\s+(?:for\s+)?(.+?)\s+(?:in\s+|on\s+)(.+)
+2025-06-29 21:35:21,774 - jarvis.action_dispatcher - INFO - Handler: _handle_search_files
+2025-06-29 21:35:21,781 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 21:35:21,790 - jarvis.ui_manager_pyqt - INFO - Showing response: I couldn't complete that action: Path does not exi...
+2025-06-29 21:47:25,162 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 21:47:25,169 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 21:47:25,175 - jarvis.ai_engine - INFO - Ended session: session_1751247179
+2025-06-29 21:47:25,181 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 21:47:25,186 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 21:47:25,192 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 21:47:25,197 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 21:47:25,202 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 21:47:25,208 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 21:47:25,217 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 21:47:25,223 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 21:47:25,232 - jarvis.ui_manager_pyqt - INFO - Settings window closed
+2025-06-29 22:39:53,576 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 22:39:53,577 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 22:39:53,582 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 22:39:53,591 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 22:39:53,597 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 22:39:53,602 - jarvis.action_dispatcher - INFO - UI automation system initialized
+2025-06-29 22:39:53,606 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 22:39:53,642 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 22:39:53,646 - jarvis.ai_engine - INFO - Started new session: session_1751251193
+2025-06-29 22:39:53,651 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 22:39:53,656 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 22:39:53,945 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 22:39:53,950 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 22:39:53,956 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 22:39:54,014 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 22:39:54,021 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 22:39:54,027 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 22:40:00,704 - jarvis.ui_manager_pyqt - INFO - Chat message received: open github.com on chrome
+2025-06-29 22:40:00,718 - jarvis.main_pyqt - INFO - Processing text input: open github.com on chrome
+2025-06-29 22:40:00,725 - jarvis.action_dispatcher - INFO - Processing input: 'open github.com on chrome'
+2025-06-29 22:40:00,731 - jarvis.app_automators - INFO - Processing automation command: 'open github.com on chrome'
+2025-06-29 22:40:00,737 - jarvis.app_automators - INFO - Automation pattern matched: (?:open|go\s+to|navigate\s+to)\s+((?:https?://|www\.|\w+\.\w+)[^\s]*)(?:\s+in\s+(\w+))?
+2025-06-29 22:40:00,743 - jarvis.app_automators - INFO - Opening website: https://github.com (new_tab: False)
+2025-06-29 22:40:00,749 - jarvis.ui_automator - INFO - Executing automation command: focus_app
+2025-06-29 22:40:00,761 - jarvis.ui_automator - INFO - Found window: w - Google Search - Google Chrome for app: chrome
+2025-06-29 22:40:01,074 - jarvis.ui_automator - INFO - Successfully activated window: w - Google Search - Google Chrome
+2025-06-29 22:40:01,291 - jarvis.ui_automator - INFO - Window focus verified: w - Google Search - Google Chrome
+2025-06-29 22:40:02,327 - jarvis.ui_automator - INFO - Executing automation command: key_combination
+2025-06-29 22:40:02,449 - jarvis.ui_automator - INFO - Pressed key combination: ctrl+l
+2025-06-29 22:40:03,183 - jarvis.ui_automator - INFO - Executing automation command: type_text
+2025-06-29 22:40:04,235 - jarvis.ui_automator - INFO - Typed text: https://github.com
+2025-06-29 22:40:04,254 - jarvis.ui_automator - INFO - Executing automation command: press_key
+2025-06-29 22:40:04,362 - jarvis.ui_automator - INFO - Pressed key: enter
+2025-06-29 22:40:04,484 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:40:04,499 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'app_automation' completed successfully....
+2025-06-29 22:40:04,509 - jarvis.main_pyqt - INFO - Action 'app_automation' completed successfully
+2025-06-29 22:40:27,321 - jarvis.ui_manager_pyqt - INFO - Chat message received: start a new repository on github.com
+2025-06-29 22:40:27,332 - jarvis.main_pyqt - INFO - Processing text input: start a new repository on github.com
+2025-06-29 22:40:27,341 - jarvis.action_dispatcher - INFO - Processing input: 'start a new repository on github.com'
+2025-06-29 22:40:27,348 - jarvis.app_automators - INFO - Processing automation command: 'start a new repository on github.com'
+2025-06-29 22:40:27,355 - jarvis.app_automators - INFO - Automation pattern matched: (?:open|launch|start)\s+(.+)
+2025-06-29 22:40:27,362 - jarvis.app_automators - INFO - Opening application: a new repository on github.com
+2025-06-29 22:40:27,369 - jarvis.ui_automator - INFO - Executing automation command: key_combination
+2025-06-29 22:40:27,477 - jarvis.ui_automator - INFO - Pressed key combination: win+r
+2025-06-29 22:40:28,201 - jarvis.ui_automator - INFO - Executing automation command: type_text
+2025-06-29 22:40:29,851 - jarvis.ui_automator - INFO - Typed text: a new repository on github.com
+2025-06-29 22:40:29,876 - jarvis.ui_automator - INFO - Executing automation command: press_key
+2025-06-29 22:40:29,983 - jarvis.ui_automator - INFO - Pressed key: enter
+2025-06-29 22:40:30,109 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:40:30,119 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'app_automation' completed successfully....
+2025-06-29 22:40:30,124 - jarvis.main_pyqt - INFO - Action 'app_automation' completed successfully
+2025-06-29 22:40:45,792 - jarvis.ui_manager_pyqt - INFO - Chat message received: open youtube on chrome
+2025-06-29 22:40:45,804 - jarvis.main_pyqt - INFO - Processing text input: open youtube on chrome
+2025-06-29 22:40:45,810 - jarvis.action_dispatcher - INFO - Processing input: 'open youtube on chrome'
+2025-06-29 22:40:45,814 - jarvis.app_automators - INFO - Processing automation command: 'open youtube on chrome'
+2025-06-29 22:40:45,819 - jarvis.app_automators - INFO - Automation pattern matched: (?:open|launch|start)\s+(.+)
+2025-06-29 22:40:45,824 - jarvis.app_automators - INFO - Opening application: youtube on chrome
+2025-06-29 22:40:45,828 - jarvis.ui_automator - INFO - Executing automation command: key_combination
+2025-06-29 22:40:45,935 - jarvis.ui_automator - INFO - Pressed key combination: win+r
+2025-06-29 22:40:46,654 - jarvis.ui_automator - INFO - Executing automation command: type_text
+2025-06-29 22:40:47,641 - jarvis.ui_automator - INFO - Typed text: youtube on chrome
+2025-06-29 22:40:47,653 - jarvis.ui_automator - INFO - Executing automation command: press_key
+2025-06-29 22:40:47,759 - jarvis.ui_automator - INFO - Pressed key: enter
+2025-06-29 22:40:47,882 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:40:47,888 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'app_automation' completed successfully....
+2025-06-29 22:40:47,894 - jarvis.main_pyqt - INFO - Action 'app_automation' completed successfully
+2025-06-29 22:41:06,555 - jarvis.ui_manager_pyqt - INFO - Chat message received: play gangnam style on spotify
+2025-06-29 22:41:06,568 - jarvis.main_pyqt - INFO - Processing text input: play gangnam style on spotify
+2025-06-29 22:41:06,574 - jarvis.action_dispatcher - INFO - Processing input: 'play gangnam style on spotify'
+2025-06-29 22:41:06,580 - jarvis.app_automators - INFO - Processing automation command: 'play gangnam style on spotify'
+2025-06-29 22:41:06,592 - jarvis.action_dispatcher - INFO - No action pattern matched
+2025-06-29 22:41:12,477 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:41:12,487 - jarvis.ui_manager_pyqt - INFO - Showing response: To play "Gangnam Style" by PSY on Spotify, you'll ...
+2025-06-29 22:41:12,493 - jarvis.main_pyqt - INFO - Response generated in 5882ms
+2025-06-29 22:42:03,620 - jarvis.ui_manager_pyqt - INFO - Chat message received: open spotify
+2025-06-29 22:42:03,632 - jarvis.main_pyqt - INFO - Processing text input: open spotify
+2025-06-29 22:42:03,638 - jarvis.action_dispatcher - INFO - Processing input: 'open spotify'
+2025-06-29 22:42:03,643 - jarvis.app_automators - INFO - Processing automation command: 'open spotify'
+2025-06-29 22:42:03,647 - jarvis.app_automators - INFO - Automation pattern matched: (?:open|launch|start)\s+(.+)
+2025-06-29 22:42:03,653 - jarvis.app_automators - INFO - Opening application: spotify
+2025-06-29 22:42:03,657 - jarvis.ui_automator - INFO - Executing automation command: key_combination
+2025-06-29 22:42:03,765 - jarvis.ui_automator - INFO - Pressed key combination: win+r
+2025-06-29 22:42:04,505 - jarvis.ui_automator - INFO - Executing automation command: type_text
+2025-06-29 22:42:05,004 - jarvis.ui_automator - INFO - Typed text: spotify
+2025-06-29 22:42:05,016 - jarvis.ui_automator - INFO - Executing automation command: press_key
+2025-06-29 22:42:05,121 - jarvis.ui_automator - INFO - Pressed key: enter
+2025-06-29 22:42:05,232 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:42:05,243 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'app_automation' completed successfully....
+2025-06-29 22:42:05,254 - jarvis.main_pyqt - INFO - Action 'app_automation' completed successfully
+2025-06-29 22:42:21,902 - jarvis.ui_manager_pyqt - INFO - Chat message received: play stronger by kanye west on spotify
+2025-06-29 22:42:21,947 - jarvis.main_pyqt - INFO - Processing text input: play stronger by kanye west on spotify
+2025-06-29 22:42:21,957 - jarvis.action_dispatcher - INFO - Processing input: 'play stronger by kanye west on spotify'
+2025-06-29 22:42:21,962 - jarvis.app_automators - INFO - Processing automation command: 'play stronger by kanye west on spotify'
+2025-06-29 22:42:21,967 - jarvis.app_automators - INFO - Automation pattern matched: play\s+(.+?)\s+(?:by\s+(.+?))?\s+(?:on\s+)?spotify
+2025-06-29 22:42:21,971 - jarvis.app_automators - INFO - Playing on Spotify: stronger kanye west
+2025-06-29 22:42:21,975 - jarvis.ui_automator - INFO - Executing automation command: focus_app
+2025-06-29 22:42:22,027 - jarvis.ui_automator - INFO - Found window: Spotify Premium for app: spotify
+2025-06-29 22:42:22,350 - jarvis.ui_automator - INFO - Successfully activated window: Spotify Premium
+2025-06-29 22:42:22,568 - jarvis.ui_automator - INFO - Window focus verified: Spotify Premium
+2025-06-29 22:42:23,593 - jarvis.ui_automator - INFO - Executing automation command: key_combination
+2025-06-29 22:42:23,710 - jarvis.ui_automator - INFO - Pressed key combination: ctrl+l
+2025-06-29 22:42:24,446 - jarvis.ui_automator - INFO - Executing automation command: type_text
+2025-06-29 22:42:25,560 - jarvis.ui_automator - INFO - Typed text: stronger kanye west
+2025-06-29 22:42:25,588 - jarvis.ui_automator - INFO - Executing automation command: press_key
+2025-06-29 22:42:25,696 - jarvis.ui_automator - INFO - Pressed key: enter
+2025-06-29 22:42:27,824 - jarvis.ui_automator - INFO - Executing automation command: analyze_screen
+2025-06-29 22:42:27,994 - jarvis.ui_automator - INFO - Screenshot saved: jarvis\temp\screenshots\automation_20250629_224227.png
+2025-06-29 22:42:28,009 - jarvis.ai_engine - INFO - Original image size: (3440, 1440), mode: RGB
+2025-06-29 22:42:28,236 - jarvis.ai_engine - INFO - Encoded image size: 1015724 characters (PNG format)
+2025-06-29 22:42:38,973 - jarvis.user_profile - INFO - Loaded profile for user: sckam
+2025-06-29 22:42:39,004 - jarvis.ui_manager_pyqt - INFO - Settings window created and shown
+2025-06-29 22:42:39,009 - jarvis.ui_manager_pyqt - INFO - Settings window opened via UIManager from chat window
+2025-06-29 22:43:02,043 - jarvis.ui_automator - ERROR - Failed to parse UI analysis JSON: Expecting value: line 1 column 2 (char 1)
+2025-06-29 22:43:02,052 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 22:43:02,053 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:43:02,059 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 22:43:02,064 - jarvis.ui_manager_pyqt - INFO - Showing response: I couldn't complete that action: Could not analyze...
+2025-06-29 22:43:02,069 - jarvis.ai_engine - INFO - Ended session: session_1751251193
+2025-06-29 22:43:02,079 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 22:43:02,084 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 22:43:02,090 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 22:43:02,095 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 22:43:02,101 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 22:43:02,107 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 22:43:02,116 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 22:43:02,123 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete
+2025-06-29 22:43:02,134 - jarvis.ui_manager_pyqt - INFO - Settings window closed
+2025-06-29 22:43:05,979 - jarvis - INFO - Logging initialized - Level: INFO
+2025-06-29 22:43:05,980 - jarvis.main_pyqt - INFO - Initializing Jarvis AI Assistant with PyQt6...
+2025-06-29 22:43:05,985 - src.jarvis.core.config - INFO - Configuration validation passed
+2025-06-29 22:43:05,994 - jarvis.main_pyqt - INFO - Voice features disabled in configuration
+2025-06-29 22:43:06,000 - jarvis.action_dispatcher - INFO - Temp folder structure created at: jarvis\temp
+2025-06-29 22:43:06,005 - jarvis.action_dispatcher - INFO - UI automation system initialized
+2025-06-29 22:43:06,010 - jarvis.ui_manager_pyqt - INFO - Initializing PyQt6 UI manager...
+2025-06-29 22:43:06,044 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager initialized successfully
+2025-06-29 22:43:06,048 - jarvis.ai_engine - INFO - Started new session: session_1751251386
+2025-06-29 22:43:06,054 - jarvis.main_pyqt - INFO - Jarvis AI Assistant initialized successfully
+2025-06-29 22:43:06,059 - jarvis.main_pyqt - INFO - Jarvis AI Assistant started
+2025-06-29 22:43:06,337 - jarvis.ui_manager_pyqt - INFO - Chat window shown
+2025-06-29 22:43:06,342 - jarvis.main_pyqt - INFO - Starting text input monitoring
+2025-06-29 22:43:06,349 - jarvis.text_handler - INFO - Initializing text input handler...
+2025-06-29 22:43:06,410 - jarvis.text_handler - INFO - Hotkey registered: ctrl+alt+j
+2025-06-29 22:43:06,415 - jarvis.text_handler - INFO - Text input handler initialized successfully
+2025-06-29 22:43:06,421 - jarvis.main_pyqt - INFO - Starting UI management
+2025-06-29 22:43:11,527 - jarvis.ui_manager_pyqt - INFO - Chat message received: open youtube on chrome
+2025-06-29 22:43:11,539 - jarvis.main_pyqt - INFO - Processing text input: open youtube on chrome
+2025-06-29 22:43:11,545 - jarvis.action_dispatcher - INFO - Processing input: 'open youtube on chrome'
+2025-06-29 22:43:11,550 - jarvis.app_automators - INFO - Processing automation command: 'open youtube on chrome'
+2025-06-29 22:43:11,556 - jarvis.app_automators - INFO - Automation pattern matched: (?:open|launch|start)\s+(.+)
+2025-06-29 22:43:11,562 - jarvis.app_automators - INFO - Opening application: youtube on chrome
+2025-06-29 22:43:11,567 - jarvis.ui_automator - INFO - Executing automation command: key_combination
+2025-06-29 22:43:11,674 - jarvis.ui_automator - INFO - Pressed key combination: win+r
+2025-06-29 22:43:12,395 - jarvis.ui_automator - INFO - Executing automation command: type_text
+2025-06-29 22:43:13,378 - jarvis.ui_automator - INFO - Typed text: youtube on chrome
+2025-06-29 22:43:13,390 - jarvis.ui_automator - INFO - Executing automation command: press_key
+2025-06-29 22:43:13,497 - jarvis.ui_automator - INFO - Pressed key: enter
+2025-06-29 22:43:13,606 - jarvis.tts_engine - WARNING - TTS engine not initialized
+2025-06-29 22:43:13,614 - jarvis.ui_manager_pyqt - INFO - Showing response: Action 'app_automation' completed successfully....
+2025-06-29 22:43:13,621 - jarvis.main_pyqt - INFO - Action 'app_automation' completed successfully
+2025-06-29 22:43:21,066 - jarvis.main_pyqt - INFO - Received signal 2, shutting down...
+2025-06-29 22:43:21,078 - jarvis.main_pyqt - INFO - Shutting down Jarvis AI Assistant...
+2025-06-29 22:43:21,084 - jarvis.ai_engine - INFO - Ended session: session_1751251386
+2025-06-29 22:43:21,089 - jarvis.text_handler - INFO - Cleaning up text input handler...
+2025-06-29 22:43:21,096 - jarvis.text_handler - INFO - Hotkey unregistered: ctrl+alt+j
+2025-06-29 22:43:21,101 - jarvis.text_handler - INFO - Text input handler cleanup complete
+2025-06-29 22:43:21,107 - jarvis.tts_engine - INFO - Cleaning up TTS engine...
+2025-06-29 22:43:21,113 - jarvis.tts_engine - INFO - TTS engine cleanup complete
+2025-06-29 22:43:21,118 - jarvis.ui_manager_pyqt - INFO - Cleaning up PyQt6 UI manager...
+2025-06-29 22:43:21,125 - jarvis.ui_manager_pyqt - INFO - PyQt6 UI manager cleanup complete
+2025-06-29 22:43:21,132 - jarvis.main_pyqt - INFO - Jarvis AI Assistant shutdown complete

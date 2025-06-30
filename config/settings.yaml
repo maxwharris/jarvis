@@ -1,87 +1,75 @@
-# Jarvis AI Assistant Configuration
-
-# General Settings
 app:
-  name: "Jarvis"
-  version: "1.0.0"
   debug: false
-  log_level: "INFO"
-
-# AI Model Configuration
-models:
-  text_model: "qwen2.5:14b"
-  vision_model: "llava:latest"
-  embedding_model: "nomic-embed-text"
-  ollama_host: "http://localhost:11434"
-  max_tokens: 4096
-  temperature: 0.7
-  context_window: 8192
-
-# Voice Settings (Disabled for Python 3.13 compatibility)
-voice:
-  enabled: false  # Disable voice features entirely
-  wake_word: "hey max"
-  wake_word_engine: "disabled"
-  stt_engine: "disabled"
-  stt_model: "base"
-  tts_engine: "pyttsx3"  # only compatible TTS engine for Python 3.13
-  tts_voice: "en_v6"
-  audio_device: null  # null for default
-  sample_rate: 16000
-  chunk_size: 1024
-  silence_threshold: 0.01
-  silence_duration: 2.0
-
-# Input Settings
-input:
-  hotkey: "ctrl+alt+j"
-  popup_timeout: 30
-  max_input_length: 1000
-
-# Output Settings
-output:
-  speak_responses: true
-  show_notifications: true
-  response_timeout: 30
-
-# Privacy and Security
-privacy:
-  online_mode: false
-  confirm_dangerous_actions: true
-  log_conversations: true
-  encrypt_logs: false
-  auto_delete_logs_days: 30
-
-# File Management
-file_management:
-  allowed_extensions: [".txt", ".pdf", ".docx", ".jpg", ".png", ".gif", ".mp4", ".mp3"]
-  max_file_size_mb: 100
-  backup_before_operations: true
-  safe_directories: ["~/Documents", "~/Downloads", "~/Desktop"]
-
-# Web Search (Online Mode)
-web_search:
-  search_engine: "duckduckgo"
-  max_results: 5
-  timeout: 10
-  user_agent: "Jarvis AI Assistant 1.0"
-
-# Database
+  log_level: INFO
+  name: Jarvis
+  version: 1.0.0
 database:
-  path: "data/jarvis.db"
   backup_interval_hours: 24
   max_backup_files: 7
-
-# UI Settings
-ui:
-  theme: "dark"
-  system_tray: true
-  startup_notification: true
-  minimize_to_tray: true
-
-# Performance
+  path: data/jarvis.db
+file_management:
+  allowed_extensions:
+  - .txt
+  - .pdf
+  - .docx
+  - .jpg
+  - .png
+  - .gif
+  - .mp4
+  - .mp3
+  backup_before_operations: true
+  max_file_size_mb: 100
+  safe_directories:
+  - ~/Documents
+  - ~/Downloads
+  - ~/Desktop
+input:
+  hotkey: ctrl+alt+j
+  max_input_length: 1000
+  popup_timeout: 30
+models:
+  context_window: 8192
+  embedding_model: nomic-embed-text
+  max_tokens: 4096
+  ollama_host: http://localhost:11434
+  temperature: 0.7
+  text_model: qwen2.5:14b
+  vision_model: llava:latest
+output:
+  response_timeout: 30
+  show_notifications: true
+  speak_responses: true
 performance:
-  max_concurrent_tasks: 3
   cache_size_mb: 512
+  cpu_threads: null
   gpu_acceleration: true
-  cpu_threads: null  # null for auto-detect
+  max_concurrent_tasks: 3
+privacy:
+  auto_delete_logs_days: 30
+  confirm_dangerous_actions: true
+  encrypt_logs: false
+  log_conversations: true
+  online_mode: true
+ui:
+  minimize_to_tray: true
+  startup_notification: true
+  system_tray: true
+  theme: dark
+voice:
+  audio_device: null
+  chunk_size: 1024
+  enabled: false
+  sample_rate: 16000
+  silence_duration: 2.0
+  silence_threshold: 0.01
+  stt_engine: disabled
+  stt_model: base
+  tts_engine: pyttsx3
+  tts_voice: en_v6
+  wake_word: hey max
+  wake_word_engine: disabled
+web_search:
+  max_results: 5
+  search_engine: duckduckgo
+  timeout: 10
+  user_agent: Jarvis AI Assistant 1.0

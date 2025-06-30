@@ -138,9 +138,10 @@ class ChatWindow(QMainWindow):
     message_received = pyqtSignal(str, str, datetime)
     status_changed = pyqtSignal(str)
     
-    def __init__(self):
+    def __init__(self, ui_manager=None):
         super().__init__()
         self.send_callback = None
+        self.ui_manager = ui_manager  # Reference to UIManager for settings
         self.setup_ui()
         self.apply_styling()
         self.setup_signals()
@@ -223,6 +224,19 @@ class ChatWindow(QMainWindow):
         title_label = QLabel("Jarvis AI Assistant")
         title_label.setFont(QFont("Segoe UI", 12, QFont.Weight.Bold))
         
+        # Online/Offline toggle button
+        self.online_toggle_btn = QPushButton()
+        self.online_toggle_btn.setFixedSize(80, 25)
+        self.online_toggle_btn.setToolTip("Toggle Online/Offline Mode")
+        self.online_toggle_btn.clicked.connect(self.toggle_online_mode)
+        self.update_online_button()  # Set initial state
+        
+        # Settings button
+        settings_btn = QPushButton("⚙")
+        settings_btn.setFixedSize(30, 25)
+        settings_btn.setToolTip("Settings")
+        settings_btn.clicked.connect(self.open_settings)
+        
         # Window controls
         minimize_btn = QPushButton("−")
         minimize_btn.setFixedSize(30, 25)
@@ -234,6 +248,8 @@ class ChatWindow(QMainWindow):
         
         layout.addWidget(title_label)
         layout.addStretch()
+        layout.addWidget(self.online_toggle_btn)
+        layout.addWidget(settings_btn)
         layout.addWidget(minimize_btn)
         layout.addWidget(close_btn)
         
@@ -405,6 +421,102 @@ class ChatWindow(QMainWindow):
         """Update status label."""
         self.status_label.setText(status)
     
+    def toggle_online_mode(self):
+        """Toggle between online and offline mode."""
+        try:
+            # Toggle the mode using config
+            new_state = config.toggle_online_mode()
+            
+            # Update button appearance
+            self.update_online_button()
+            
+            # Notify AI engine to refresh system prompt
+            try:
+                from ..core.ai_engine import ai_engine
+                ai_engine.system_prompt = ai_engine._build_system_prompt()
+                logger.info("AI engine system prompt updated with new online/offline state")
+            except Exception as e:
+                logger.error(f"Error updating AI engine system prompt: {e}")
+            
+            # Show status message
+            mode_text = "Online" if new_state else "Offline"
+            self.add_message("System", f"Switched to {mode_text} mode", datetime.now())
+            
+            logger.info(f"Online mode toggled to: {new_state}")
+            
+        except Exception as e:
+            logger.error(f"Error toggling online mode: {e}")
+            self.add_message("System", f"Error toggling online mode: {e}", datetime.now())
+    
+    def update_online_button(self):
+        """Update the online/offline button appearance based on current state."""
+        try:
+            is_online = config.is_online_mode()
+            
+            if is_online:
+                # Online state - green with globe icon
+                self.online_toggle_btn.setText("🌐 Online")
+                self.online_toggle_btn.setStyleSheet("""
+                    QPushButton {
+                        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                            stop:0 #28a745, stop:1 #20c997);
+                        border: none;
+                        border-radius: 12px;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 9px;
+                    }
+                    QPushButton:hover {
+                        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                            stop:0 #34ce57, stop:1 #2dd4aa);
+                    }
+                    QPushButton:pressed {
+                        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                            stop:0 #1e7e34, stop:1 #1a9e7e);
+                    }
+                """)
+            else:
+                # Offline state - gray with lock icon
+                self.online_toggle_btn.setText("🔒 Offline")
+                self.online_toggle_btn.setStyleSheet("""
+                    QPushButton {
+                        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                            stop:0 #6c757d, stop:1 #495057);
+                        border: none;
+                        border-radius: 12px;
+                        color: white;
+                        font-weight: bold;
+                        font-size: 9px;
+                    }
+                    QPushButton:hover {
+                        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                            stop:0 #7a8288, stop:1 #545b62);
+                    }
+                    QPushButton:pressed {
+                        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+                            stop:0 #5a6268, stop:1 #3d4449);
+                    }
+                """)
+            
+        except Exception as e:
+            logger.error(f"Error updating online button: {e}")
+    
+    def open_settings(self):
+        """Open the settings window."""
+        try:
+            if self.ui_manager:
+                # Use UIManager's settings method for proper window management
+                self.ui_manager.show_settings()
+                logger.info("Settings window opened via UIManager from chat window")
+            else:
+                # Fallback to standalone function if no UIManager reference
+                from ..ui.settings_window import show_settings_window
+                settings_window = show_settings_window()
+                logger.info("Settings window opened from chat window (fallback)")
+        except Exception as e:
+            logger.error(f"Error opening settings: {e}")
+            self.add_message("System", f"Error opening settings: {e}", datetime.now())
+    
     def mousePressEvent(self, event):
         """Handle mouse press for window dragging."""
         if event.button() == Qt.MouseButton.LeftButton:
@@ -424,6 +536,7 @@ class UIManager:
     def __init__(self):
         self.app = None
         self.chat_window = None
+        self.settings_window = None  # Store settings window reference
         self.message_callback = None
         self.shutdown_callback = None
         self.initialized = False
@@ -476,6 +589,9 @@ class UIManager:
                 show_action = tray_menu.addAction("Show Chat")
                 show_action.triggered.connect(self.show_chat_window)
                 
+                settings_action = tray_menu.addAction("Settings")
+                settings_action.triggered.connect(self.show_settings)
+                
                 tray_menu.addSeparator()
                 
                 quit_action = tray_menu.addAction("Quit")
@@ -499,7 +615,7 @@ class UIManager:
         """Show the chat window."""
         try:
             if not self.chat_window:
-                self.chat_window = ChatWindow()
+                self.chat_window = ChatWindow(ui_manager=self)  # Pass UIManager reference
                 self.chat_window.set_send_callback(self._on_chat_message)
                 
                 # Add welcome message
@@ -517,6 +633,39 @@ class UIManager:
             
         except Exception as e:
             logger.error(f"Error showing chat window: {e}")
+    
+    def show_settings(self):
+        """Show the settings window."""
+        try:
+            # Check if settings window already exists and is visible
+            if self.settings_window and not self.settings_window.isHidden():
+                # Bring existing window to front
+                self.settings_window.show()
+                self.settings_window.raise_()
+                self.settings_window.activateWindow()
+                logger.info("Brought existing settings window to front")
+                return
+            
+            # Create new settings window
+            from ..ui.settings_window import SettingsWindow
+            self.settings_window = SettingsWindow()
+            
+            # Connect close event to cleanup
+            def on_settings_closed():
+                self.settings_window = None
+                logger.info("Settings window closed")
+            
+            self.settings_window.destroyed.connect(on_settings_closed)
+            
+            # Show the window
+            self.settings_window.show()
+            self.settings_window.raise_()
+            self.settings_window.activateWindow()
+            
+            logger.info("Settings window created and shown")
+            
+        except Exception as e:
+            logger.error(f"Error showing settings window: {e}")
     
     def _on_chat_message(self, message: str):
         """Handle chat message from user."""

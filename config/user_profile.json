@@ -1,0 +1,27 @@
+{
+  "system_username": "sckam",
+  "directories": {
+    "home": "C:\\Users\\sckam",
+    "desktop": "C:\\Users\\sckam\\Desktop",
+    "documents": "C:\\Users\\sckam\\Documents",
+    "downloads": "C:\\Users\\sckam\\Downloads",
+    "pictures": "C:\\Users\\sckam\\Pictures",
+    "videos": "C:\\Users\\sckam\\Videos",
+    "music": "C:\\Users\\sckam\\Music",
+    "custom_aliases": {}
+  },
+  "preferences": {
+    "display_name": "Sckam",
+    "greeting_style": "formal",
+    "response_length": "brief",
+    "time_format": "12h",
+    "date_format": "US",
+    "theme": "dark",
+    "font_size": "medium",
+    "notifications_enabled": true,
+    "startup_notification": true,
+    "system_tray": true
+  },
+  "created_at": "2025-06-29T19:05:38.521397",
+  "last_updated": "2025-06-29T21:34:55.068738"
+}

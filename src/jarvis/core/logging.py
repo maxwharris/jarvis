@@ -15,17 +15,77 @@ from .config import config
 
 
 class DatabaseLogHandler(logging.Handler):
-    """Custom log handler that writes to SQLite database."""
+    """Custom log handler that writes to SQLite database with robust error handling."""
     
     def __init__(self, db_path: str):
         super().__init__()
         self.db_path = db_path
+        self.db_available = False
+        self.init_attempts = 0
+        self.max_init_attempts = 3
         self._init_database()
     
-    def _init_database(self):
-        """Initialize the logging database."""
+    def _validate_database(self) -> bool:
+        """Validate that the database file is a valid SQLite database."""
         try:
-            with sqlite3.connect(self.db_path) as conn:
+            if not os.path.exists(self.db_path):
+                return False
+            
+            # Check file size - SQLite databases are at least 1024 bytes
+            if os.path.getsize(self.db_path) < 1024:
+                print(f"Database file too small ({os.path.getsize(self.db_path)} bytes), likely corrupted")
+                return False
+            
+            # Try to open and query the database
+            with sqlite3.connect(self.db_path, timeout=5.0) as conn:
+                cursor = conn.execute("SELECT name FROM sqlite_master WHERE type='table' LIMIT 1")
+                cursor.fetchone()
+                return True
+                
+        except sqlite3.DatabaseError as e:
+            print(f"Database validation failed: {e}")
+            return False
+        except Exception as e:
+            print(f"Unexpected error validating database: {e}")
+            return False
+    
+    def _backup_corrupted_database(self):
+        """Backup corrupted database file before recreating."""
+        try:
+            if os.path.exists(self.db_path):
+                backup_path = f"{self.db_path}.corrupted.{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+                os.rename(self.db_path, backup_path)
+                print(f"Corrupted database backed up to: {backup_path}")
+        except Exception as e:
+            print(f"Could not backup corrupted database: {e}")
+            # Try to remove the corrupted file
+            try:
+                os.remove(self.db_path)
+                print("Removed corrupted database file")
+            except Exception as e2:
+                print(f"Could not remove corrupted database: {e2}")
+    
+    def _init_database(self):
+        """Initialize the logging database with robust error handling."""
+        self.init_attempts += 1
+        
+        try:
+            # Check if database exists and is valid
+            if os.path.exists(self.db_path) and not self._validate_database():
+                print("Database file is corrupted, attempting recovery...")
+                self._backup_corrupted_database()
+            
+            # Ensure directory exists
+            os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
+            
+            # Create/initialize database with timeout
+            with sqlite3.connect(self.db_path, timeout=10.0) as conn:
+                # Enable WAL mode for better concurrent access
+                conn.execute("PRAGMA journal_mode=WAL")
+                conn.execute("PRAGMA synchronous=NORMAL")
+                conn.execute("PRAGMA temp_store=MEMORY")
+                conn.execute("PRAGMA mmap_size=268435456")  # 256MB
+                
                 conn.execute("""
                     CREATE TABLE IF NOT EXISTS logs (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,7 +101,7 @@ class DatabaseLogHandler(logging.Handler):
                     )
                 """)
                 
-                # Create index for faster queries
+                # Create indexes for faster queries
                 conn.execute("""
                     CREATE INDEX IF NOT EXISTS idx_logs_timestamp 
                     ON logs(timestamp)
@@ -52,14 +112,42 @@ class DatabaseLogHandler(logging.Handler):
                     ON logs(level)
                 """)
                 
+                # Test write to ensure database is working
+                conn.execute("""
+                    INSERT INTO logs (timestamp, level, logger, message)
+                    VALUES (?, 'INFO', 'system', 'Database initialized successfully')
+                """, (datetime.now().isoformat(),))
+                
                 conn.commit()
+                
+                # Validate the database was created properly
+                if self._validate_database():
+                    self.db_available = True
+                    print("Database logging initialized successfully")
+                else:
+                    raise sqlite3.DatabaseError("Database validation failed after creation")
+                
         except Exception as e:
-            print(f"Error initializing log database: {e}")
+            print(f"Error initializing log database (attempt {self.init_attempts}): {e}")
+            self.db_available = False
+            
+            # Retry initialization if we haven't exceeded max attempts
+            if self.init_attempts < self.max_init_attempts:
+                print(f"Retrying database initialization... ({self.init_attempts}/{self.max_init_attempts})")
+                import time
+                time.sleep(1)  # Brief delay before retry
+                self._init_database()
+            else:
+                print("Database logging disabled due to initialization failures")
     
     def emit(self, record):
-        """Emit a log record to the database."""
+        """Emit a log record to the database with robust error handling."""
+        # Skip database logging if it's not available
+        if not self.db_available:
+            return
+        
         try:
-            with sqlite3.connect(self.db_path) as conn:
+            with sqlite3.connect(self.db_path, timeout=5.0) as conn:
                 conn.execute("""
                     INSERT INTO logs (
                         timestamp, level, logger, message, module, 
@@ -77,23 +165,44 @@ class DatabaseLogHandler(logging.Handler):
                     record.process if hasattr(record, 'process') else None
                 ))
                 conn.commit()
+                
+        except sqlite3.DatabaseError as e:
+            # Database-specific error - might be corruption
+            if "file is not a database" in str(e).lower() or "database disk image is malformed" in str(e).lower():
+                print(f"Database corruption detected: {e}")
+                print("Attempting to recover database...")
+                self.db_available = False
+                self._init_database()  # Try to recover
+            else:
+                # Other database errors - disable database logging temporarily
+                print(f"Database error (disabling database logging): {e}")
+                self.db_available = False
+                
         except Exception as e:
-            # Fallback to stderr if database logging fails
-            print(f"Error writing to log database: {e}")
-            print(f"Log record: {self.format(record)}")
+            # Other errors - log but don't disable database logging
+            if "Error writing to log database" not in str(e):  # Avoid recursive error messages
+                print(f"Error writing to log database: {e}")
 
 
 class ConversationLogger:
-    """Logger for conversation history."""
+    """Logger for conversation history with robust error handling."""
     
     def __init__(self, db_path: str):
         self.db_path = db_path
+        self.db_available = True
         self._init_database()
     
     def _init_database(self):
-        """Initialize the conversation database."""
+        """Initialize the conversation database with robust error handling."""
         try:
-            with sqlite3.connect(self.db_path) as conn:
+            # Ensure directory exists
+            os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
+            
+            with sqlite3.connect(self.db_path, timeout=10.0) as conn:
+                # Enable WAL mode for better concurrent access
+                conn.execute("PRAGMA journal_mode=WAL")
+                conn.execute("PRAGMA synchronous=NORMAL")
+                
                 conn.execute("""
                     CREATE TABLE IF NOT EXISTS conversations (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -132,8 +241,11 @@ class ConversationLogger:
                 """)
                 
                 conn.commit()
+                self.db_available = True
+                
         except Exception as e:
             print(f"Error initializing conversation database: {e}")
+            self.db_available = False
     
     def start_session(self, session_id: str) -> None:
         """Start a new conversation session."""

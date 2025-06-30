@@ -270,6 +270,9 @@ Remember: You are running locally and privately on the user's system."""
         
         try:
             with log_performance(logger, "Text processing"):
+                # Update system prompt to reflect current online/offline state
+                self.system_prompt = self._build_system_prompt()
+                
                 # Add user message to history
                 self.conversation_history.append({
                     "role": "user",
